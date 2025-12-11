@@ -1,0 +1,17 @@
+<div *ngIf="cart$ | async as cart">
+  <div *ngFor="let p of cart" class="border rounded-lg p-4 mb-2 shadow">
+    {{ p.title }} - ${{ p.price }}
+    <button
+      class="ml-2 bg-red-500 text-white px-2 py-1 rounded"
+      (click)="remove(p.id)"
+    >
+      Rimuovi
+    </button>
+  </div>
+  <button
+    class="mt-2 bg-gray-500 text-white px-4 py-2 rounded"
+    (click)="clear()"
+  >
+    Svuota carrello
+  </button>
+</div>
