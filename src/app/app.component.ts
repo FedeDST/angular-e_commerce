@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductListComponent } from './features/products/product-list/product-list.component';
 import { CartComponent } from './features/cart/cart.component';
-import { TopBarComponent } from "./features/top-bar/top-bar.component";
+import { TopBarComponent } from "./features/top-bar-utilities/top-bar/top-bar.component";
 
 @Component({
   selector: 'app-root',

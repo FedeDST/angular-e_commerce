@@ -1,0 +1,30 @@
+.shopping-box {
+    position: absolute;
+    top: 80px;
+    /* sotto la barra superiore */
+    right: 20px;
+    width: 300px;
+    max-height: 400px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 10px;
+}
+
+.triangle-up {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #fff;
+}
+
+.close-viewer-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding-bottom: 10px;
+}
