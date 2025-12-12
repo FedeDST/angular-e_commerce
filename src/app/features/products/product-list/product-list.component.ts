@@ -7,7 +7,7 @@ import { Product } from '../../../core/models/product.model';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-product-list',
+  selector: "app-product-list",
   standalone: true,
   imports: [
     CommonModule,
@@ -15,7 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  templateUrl: './product-list.component.html',
+  templateUrl: "./product-list.component.html",
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
@@ -23,7 +23,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private cartStore: CartStoreService,
-    private productStore: ProductStoreService
+    private productStore: ProductStoreService,
+    private CartStore: CartStoreService
   ) {}
 
   ngOnInit(): void {

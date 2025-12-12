@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CartComponent } from "../../cart/cart.component";
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-cart-viewer',
-  imports: [CartComponent],
+  imports: [CartComponent, CommonModule],
   templateUrl: './cart-viewer.component.html',
   styleUrl: './cart-viewer.component.css'
 })

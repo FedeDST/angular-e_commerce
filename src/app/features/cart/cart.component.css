@@ -1,0 +1,8 @@
+.product-counter{
+    display: inline-block!important;
+    background-color: #00aaff !important;
+    border-radius: 50% !important;
+    padding: 4px !important;
+    box-sizing: border-box !important;
+    width: 30px!important;
+}
