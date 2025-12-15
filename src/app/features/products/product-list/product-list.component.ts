@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductSearchComponent } from '../product-search/product-search.component';
 import { CartStoreService } from '../../../core/services/cart-store.service';
@@ -21,10 +21,10 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   filtered: Product[] = [];
 
+
   constructor(
     private cartStore: CartStoreService,
     private productStore: ProductStoreService,
-    private CartStore: CartStoreService
   ) {}
 
   ngOnInit(): void {

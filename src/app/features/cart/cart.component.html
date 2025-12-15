@@ -1,21 +1,17 @@
 <div *ngIf="cart$ | async as cart">
   <div *ngFor="let p of cart" class="border rounded-lg p-4 mb-2 shadow">
-    {{ p.title }} - ${{ p.price }} 
-    <button
-      class="ml-2 bg-transparent-500 text-white px-2 py-1 rounded"
-      (click)="remove(p.id)"
-    >
+    {{ p.title }} - ${{ p.price }}
+    <button class="ml-2 bg-transparent-500 text-white px-2 py-1 rounded" (click)="remove(p.id)">
       ➖
     </button>
     <span class="product-counter">{{p.quantity}}</span>
     <button class="ml-2 bg-transparent-500 text-white px-2 py-1 rounded" (click)="add(p)">
       ➕
     </button>
+    Totale Parziale : ${{ p.price * p.quantity }};
   </div>
-  <button
-    class="mt-2 bg-gray-500 text-white px-4 py-2 rounded"
-    (click)="clear()"
-  >
+  <button class="mt-2 bg-gray-500 text-white px-4 py-2 rounded" (click)="clear()">
     Svuota carrello
   </button>
+  <span class="cart-total">Totale : ${{total$ | async}}</span>
 </div>

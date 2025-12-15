@@ -10,6 +10,7 @@ export class CartStoreService {
   add(product: Product) {
     if (this._cart.value.find((p) => p.id === product.id)) {
       product.quantity = this.countProductInCart(product.id, product.quantity);
+      this._cart.next([...this._cart.value]);
       return;
     } else {
       product.quantity = 1;
@@ -22,7 +23,12 @@ export class CartStoreService {
       this._cart.next(this._cart.value.filter((p) => p.id !== id));
     } else {
       this._cart.value.find((p) => p.id === id)!.quantity--;
+      this._cart.next([...this._cart.value]);
     }
+  }
+  calculateTotal(): number {
+    return parseFloat(this._cart.value.reduce(
+      (sum, item) => sum + item.price * item.quantity,0).toFixed(2));
   }
 
   clear() {
