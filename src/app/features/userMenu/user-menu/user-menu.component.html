@@ -1,0 +1,17 @@
+<div *ngIf="user$ | async as user" class="cart-box-container fade" [ngClass]="showMenu ? 'show' : ''">
+    <div class="triangle-up">
+    </div>
+    <div class="cart-box">
+        <h1>User Menu</h1>
+        <ul>
+            <li>
+                <p>User name : {{user?.userInfo?.email}}</p>
+            </li>
+            <li>
+                <p>User Role: {{user?.userInfo?.role}}</p>
+            </li>
+        </ul>
+        <button (click)="logout()">Logout</button>
+
+    </div>
+</div>

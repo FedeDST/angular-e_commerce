@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductSearchComponent } from '../product-search/product-search.component';
 import { CartStoreService } from '../../../core/services/cart-store.service';
@@ -7,7 +7,7 @@ import { Product } from '../../../core/models/product.model';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-product-list',
+  selector: "app-product-list",
   standalone: true,
   imports: [
     CommonModule,
@@ -15,15 +15,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  templateUrl: './product-list.component.html',
+  templateUrl: "./product-list.component.html",
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   filtered: Product[] = [];
 
+
   constructor(
     private cartStore: CartStoreService,
-    private productStore: ProductStoreService
+    private productStore: ProductStoreService,
   ) {}
 
   ngOnInit(): void {
