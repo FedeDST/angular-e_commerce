@@ -15,9 +15,7 @@ export class CartComponent {
   cart$ = this.cartStore.cart$;
   total = 0;
 
-  myCart = this.cartStore.cart$;
-
-  total$ = this.myCart.pipe(
+  total$ = this.cart$.pipe(
     map(items =>
       items.reduce(
         (sum, i) => sum + i.price * i.quantity,0).toFixed(2)

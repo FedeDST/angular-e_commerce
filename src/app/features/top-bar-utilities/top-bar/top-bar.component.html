@@ -13,6 +13,8 @@
   <div class="right">
     <button (click)="toggleCartPreview()" class="shopping-icon">🛒</button>
     <app-cart-viewer [isOpen]="opened" (closedFromViewer)="toggleCartPreview()"></app-cart-viewer>
-    <a href="#login" class="login-icon">🔐</a>
+    <button (click)="toggleLoginModal()" class="login-icon">🔐</button>
+    <app-login-modal [isOpen]="showloginModal" (closeModal)="toggleLoginModal()"></app-login-modal>
+    <app-user-menu [showMenu]="showUserMenu" ></app-user-menu>
   </div>
 </div>
