@@ -1,20 +1,20 @@
-<div class="topnav">
-  <div class="left">
-    <h1 class="title">Angular E-commerce Test</h1>
-  </div>
-<!-- 
-  <div class="center">
-    <a class="active" href="#home">Home</a>
-    <a href="#news">Novità</a>
-    <a href="#contact">Sconti</a>
-    <a href="#about">About</a>
-  </div> -->
+<div *ngIf="user$ | async as user">
+  <div class="topnav">
+    <div class="left">
+      <h1 class="title">Angular E-commerce Test</h1>
+    </div>
 
-  <div class="right">
-    <button (click)="toggleCartPreview()" class="shopping-icon">🛒</button>
-    <app-cart-viewer [isOpen]="opened" (closedFromViewer)="toggleCartPreview()"></app-cart-viewer>
-    <button (click)="toggleLoginModal()" class="login-icon">🔐</button>
-    <app-login-modal [isOpen]="showloginModal" (closeModal)="toggleLoginModal()"></app-login-modal>
-    <app-user-menu [showMenu]="showUserMenu" ></app-user-menu>
+    <div class="right custom-icon-color">
+      @if(showHomeIcon) {
+      <a routerLink=""><fa-icon class="custom-icon-color" [icon]="icons['home']"></fa-icon></a>
+      }
+      @else if(showCartIcon){
+        <button (click)="toggleCartPreview()"><fa-icon [icon]="icons['cart']"></fa-icon></button>
+        <app-cart-viewer [isOpen]="opened" (closedFromViewer)="toggleCartPreview()"></app-cart-viewer>
+      }
+      <a routerLink="login"><fa-icon class="custom-icon-color"
+          [icon]="user.logged ? icons['user'] :icons['login']"></fa-icon></a>
+      <app-user-menu [showMenu]="showUserMenu"></app-user-menu>
+    </div>
   </div>
 </div>

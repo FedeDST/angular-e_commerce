@@ -1,8 +1,13 @@
-import { Component } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { CartViewerComponent } from "../cart-viewer.component/cart-viewer.component";
-import { LoginModalComponent } from "../../login/login-modal/login-modal.component";
 import { AuthService } from "../../../core/services/auth.service";
 import { UserMenuComponent } from "../../userMenu/user-menu/user-menu.component";
+import { NavigationEnd, Route, Router, RouterLink } from "@angular/router";
+import { IconService } from "../../../core/services/icon.service";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { CommonModule } from "@angular/common";
+import { filter, Subscription } from "rxjs";
+
 export interface User {
   email: string;
   password: string;
@@ -10,31 +15,52 @@ export interface User {
 }
 @Component({
   selector: "app-top-bar",
-  imports: [CartViewerComponent, LoginModalComponent, UserMenuComponent],
+  imports: [
+    CartViewerComponent,
+    UserMenuComponent,
+    RouterLink,
+    FontAwesomeModule,
+    CommonModule,
+  ],
   templateUrl: "./top-bar.component.html",
   styleUrl: "./top-bar.component.css",
 })
-export class TopBarComponent {
+export class TopBarComponent implements OnInit {
   opened: boolean = false;
   showUserMenu: boolean = false;
-  loggedUser: User | undefined;
+  constructor(private auth: AuthService, private icon: IconService) {}
+  icons = this.icon.icons;
+  user$ = this.auth.user$;
+  private subscription!: Subscription;
+  private router = inject(Router);
+  showHomeIcon: boolean = false;
+  showCartIcon: boolean = false;
+  currentUrl = "";
+  ngOnInit(): void {
+    this.subscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.currentUrl = event.urlAfterRedirects;
+        this.showHomeIcon = this.currentUrl !== "/";
+        this.showCartIcon = this.currentUrl !== "/login";
+      });
+  }
   toggleCartPreview() {
     this.showUserMenu = false;
     this.opened = !this.opened;
   }
-  constructor(private auth: AuthService) {}
-  showloginModal: boolean = false;
   toggleLoginModal() {
     this.opened = false;
     this.auth.isLogged().subscribe((user) => {
-      if (!user.logged) {
-        this.showloginModal = !this.showloginModal;
-      } else {
+      if (user.logged) {
         this.toggleUserMenu();
       }
     });
   }
   toggleUserMenu() {
     this.showUserMenu = !this.showUserMenu;
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

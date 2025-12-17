@@ -16,6 +16,10 @@
     "@angular/forms": "^20.0.0",
     "@angular/platform-browser": "^20.0.0",
     "@angular/router": "^20.0.0",
+    "@fortawesome/angular-fontawesome": "^3.0.0",
+    "@fortawesome/fontawesome-free": "^7.1.0",
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "rxjs": "^7.8.1",
     "tslib": "^2.5.0",
     "zone.js": "~0.15.0"
@@ -24,9 +28,9 @@
     "@angular/build": "^20.0.0",
     "@angular/cli": "^20.0.0",
     "@angular/compiler-cli": "^20.0.0",
-    "typescript": "^5.8.2",
-    "tailwindcss": "^3.3.3",
+    "autoprefixer": "^10.4.15",
     "postcss": "^8.4.33",
-    "autoprefixer": "^10.4.15"
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.8.2"
   }
 }
