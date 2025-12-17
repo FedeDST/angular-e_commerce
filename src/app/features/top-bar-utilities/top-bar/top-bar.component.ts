@@ -49,16 +49,9 @@ export class TopBarComponent implements OnInit {
     this.showUserMenu = false;
     this.opened = !this.opened;
   }
-  toggleLoginModal() {
-    this.opened = false;
-    this.auth.isLogged().subscribe((user) => {
-      if (user.logged) {
-        this.toggleUserMenu();
-      }
-    });
-  }
   toggleUserMenu() {
     this.showUserMenu = !this.showUserMenu;
+    this.opened = false;
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

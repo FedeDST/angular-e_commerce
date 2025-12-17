@@ -2,11 +2,11 @@
   display: inline;
 }
 .cart-box {
-    position: absolute;
-    top: 80px;
+    position: relative;
+    top: 15px;
     /* sotto la barra superiore */
-    right: 20px;
-    width: 300px;
+    right: 150px;
+    width: 200px;
     max-height: 400px;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -15,6 +15,7 @@
     z-index: 1000;
     padding: 10px;
     transition: fade-in 0.3s ease-in-out;
+    border-radius: 4%;
 }
 
 .triangle-up {
