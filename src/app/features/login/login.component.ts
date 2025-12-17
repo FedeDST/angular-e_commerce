@@ -1,22 +1,18 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, inject} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, ɵInternalFormsSharedModule } from '@angular/forms';
-import { AuthService } from '../../../core/services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-modal',
   imports: [ɵInternalFormsSharedModule,ReactiveFormsModule],
-  templateUrl: './login-modal.component.html',
-  styleUrl: './login-modal.component.css'
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
 })
-export class LoginModalComponent {
-@Input() isOpen: boolean = false;
-@Output() closeModal = new EventEmitter<void>();
+export class LoginComponent {
 
-close() {
-  this.isOpen = false;
-  this.closeModal.emit();
-}
 constructor(private fb:FormBuilder,private auth:AuthService){}
+private route = inject(Router);
 
 loginForm = this.fb.group({
   email: ['',[Validators.required, Validators.email]],
@@ -26,7 +22,7 @@ sendLogin(){
   this.auth.login(this.loginForm.value.email!, this.loginForm.value.password!).subscribe({
     next: (res) => {
       console.log('Login successful', res);
-      this.close();
+      this.route.navigate(['/']);
     },
     error: (err) => {
       console.error('Login failed', err);

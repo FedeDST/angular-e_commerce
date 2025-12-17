@@ -50,3 +50,6 @@
   color: black;
   border-radius: 6px;
 }
+.custom-icon-color {
+  color: #adb4ff;       /* Colore dell’icona */
+}
