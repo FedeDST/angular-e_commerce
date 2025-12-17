@@ -4,15 +4,15 @@
       <h1 class="title">Angular E-commerce Test</h1>
     </div>
 
-    <div class="right custom-icon-color">
+    <div class="custom-icon-color">
       @if(showHomeIcon) {
       <a routerLink=""><fa-icon class="custom-icon-color" [icon]="icons['home']"></fa-icon></a>
       }
       @else if(showCartIcon){
-        <button (click)="toggleCartPreview()"><fa-icon [icon]="icons['cart']"></fa-icon></button>
+        <button class="inline-block" (click)="toggleCartPreview()"><fa-icon [icon]="icons['cart']"></fa-icon></button>
         <app-cart-viewer [isOpen]="opened" (closedFromViewer)="toggleCartPreview()"></app-cart-viewer>
       }
-      <a routerLink="login"><fa-icon class="custom-icon-color"
+      <a routerLink="login" class="inline-block" (click)="user.logged ? toggleUserMenu(): null"><fa-icon class="custom-icon-color"
           [icon]="user.logged ? icons['user'] :icons['login']"></fa-icon></a>
       <app-user-menu [showMenu]="showUserMenu"></app-user-menu>
     </div>

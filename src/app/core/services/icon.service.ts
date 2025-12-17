@@ -4,7 +4,8 @@ import {
   faUser, 
   faRightToBracket, 
   IconDefinition,
-  faHome
+  faHome,
+  faSpinner
 } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
@@ -16,6 +17,7 @@ export class IconService {
     cart: faCartShopping,
     user: faUser,
     login: faRightToBracket,
-    home: faHome
+    home: faHome,
+    spinner: faSpinner
   };
 }

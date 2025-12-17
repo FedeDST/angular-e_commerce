@@ -22,14 +22,14 @@ export class AuthService {
       JSON.stringify({ email: user.email, role: user.role })
     );
     localStorage.setItem("auth_token", fakeToken);
-    this.loggedInfo.logged = true;
+    this.loggedInfo.logged = true
     this.loggedInfo.userInfo.email = user.email;
     this.loggedInfo.userInfo.role = user.role;
     this.logged$.next(this.loggedInfo);
     return of(this.loggedInfo.logged).pipe(delay(500));
   }
   logout() {
-    localStorage.removeItem("token");
+    localStorage.removeItem("auth_token");
     this.loggedInfo.logged = false;
     this.loggedInfo.userInfo = {email: '', role: 'guest'};
     this.logged$.next(this.loggedInfo);
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   private hasToken(): boolean {
-    return !!localStorage.getItem("token");
+    return !!localStorage.getItem("auth_token");
   }
   constructor() {}
 }
