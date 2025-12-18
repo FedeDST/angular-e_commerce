@@ -6,6 +6,7 @@ import { map } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { IconService } from '../../core/services/icon.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ToastService } from '../../core/services/toast.service';
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -26,20 +27,24 @@ export class CartComponent {
     )
   );
 
-  constructor(private cartStore: CartStoreService,private icon:IconService) {}
+  constructor(private cartStore: CartStoreService,private icon:IconService,private toastService:ToastService) {}
   icons = this.icon.icons;
+  toast = this.toastService.createToast();
 
   remove(id: number) {
     this.cartStore.remove(id);
     this.total = this.cartStore.calculateTotal();
+    this.toastService.updateToast(this.toast,'Prodotto rimosso','S');
   }
   add(product:Product) {
     this.cartStore.add(product);
     this.total = this.cartStore.calculateTotal();
+    this.toastService.updateToast(this.toast,'Prodotto aggiunto','S');
   }
 
   clear() {
     this.cartStore.clear();
     this.total = this.cartStore.calculateTotal();
+    this.toastService.updateToast(this.toast,'Carrello svuotato','S');
   }
 }

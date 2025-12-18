@@ -5,7 +5,7 @@
     }
     {{ p.title }} - ${{ p.price }}
     @if(hideButton){
-      Quantità : {{p.quantity}}
+      Quantità x {{p.quantity}}
     }
     @if(!hideButton){
     <button class="ml-2 bg-transparent-500 text-white px-2 py-1 rounded" (click)="remove(p.id)">
@@ -19,7 +19,8 @@
     <p>Totale Parziale : ${{ p.price * p.quantity }}</p>
   </div>
   @if(!hideButton){
-  <button class="mt-2 bg-red-500 text-white px-4 py-2 rounded" (click)="clear()">
+  <button [disabled]="cart.length === 0" [ngClass]="{'bg-red-500': cart.length > 0,
+    'bg-gray-400 cursor-not-allowed': cart.length === 0}" class="mt-2 text-white px-4 py-2 rounded" (click)="clear()">
     Svuota carrello
   </button>
   }
