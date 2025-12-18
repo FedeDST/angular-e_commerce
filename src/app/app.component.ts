@@ -3,6 +3,8 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TopBarComponent } from "./features/top-bar-utilities/top-bar/top-bar.component";
 import { RouterOutlet } from '@angular/router';
+import { ToastComponent } from "./features/toast.component/toast.component";
+import { ToastService } from "./core/services/toast.service";
 
 
 
@@ -14,15 +16,18 @@ import { RouterOutlet } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     TopBarComponent,
-    RouterOutlet
+    RouterOutlet,
+    ToastComponent
 ],
   template: `
     <div class="container mx-auto p-6">
       <app-top-bar></app-top-bar>
+      <app-toast *ngIf="toast$ | async as toast"[toastObj]="toast"></app-toast>
       <router-outlet></router-outlet>
     </div>
   `,
 })
 export class AppComponent {
-
+  constructor(private toastService:ToastService){}
+  toast$ = this.toastService.toast$;
 }

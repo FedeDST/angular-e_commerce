@@ -5,6 +5,8 @@ import { CartStoreService } from '../../../core/services/cart-store.service';
 import { ProductStoreService } from '../../../core/services/product-store.service';
 import { Product } from '../../../core/models/product.model';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastService } from '../../../core/services/toast.service';
+import { Toast } from '../../../core/models/toast.model';
 
 @Component({
   selector: "app-product-list",
@@ -20,11 +22,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   filtered: Product[] = [];
+  toast:Toast = {message:'',status:null,visible:false};
 
 
   constructor(
     private cartStore: CartStoreService,
     private productStore: ProductStoreService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -37,6 +41,8 @@ export class ProductListComponent implements OnInit {
 
   addToCart(product: Product) {
     this.cartStore.add(product);
+    this.toastService.updateToast(this.toast,'Prodotto aggiunto','S');
+
   }
 
   onSearch(value: string) {
