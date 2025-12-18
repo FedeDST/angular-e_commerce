@@ -1,7 +1,8 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { MOCK_USERS } from "../models/mock_user";
 import { BehaviorSubject, delay, Observable, of, throwError } from "rxjs";
 import { AuthUser } from "../models/auth_user";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -10,6 +11,7 @@ export class AuthService {
   loggedInfo : AuthUser  = { logged: this.hasToken(), userInfo: { email: '', role: 'guest'}};
   private logged$ = new BehaviorSubject<AuthUser>(this.loggedInfo);
   user$ = this.logged$.asObservable();
+  private router = inject(Router)
 
   login(email: string, password: string): Observable<any> {
     const user = MOCK_USERS.find(
@@ -33,6 +35,7 @@ export class AuthService {
     this.loggedInfo.logged = false;
     this.loggedInfo.userInfo = {email: '', role: 'guest'};
     this.logged$.next(this.loggedInfo);
+    this.router.navigate(['']);
   }
 
   isLogged() {

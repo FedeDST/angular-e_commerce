@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from "@angular/core";
 import { CartViewerComponent } from "../cart-viewer.component/cart-viewer.component";
 import { AuthService } from "../../../core/services/auth.service";
 import { UserMenuComponent } from "../../userMenu/user-menu/user-menu.component";
-import { NavigationEnd, Route, Router, RouterLink } from "@angular/router";
+import { NavigationEnd, Router, RouterLink } from "@angular/router";
 import { IconService } from "../../../core/services/icon.service";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { CommonModule } from "@angular/common";
@@ -42,7 +42,7 @@ export class TopBarComponent implements OnInit {
       .subscribe((event: NavigationEnd) => {
         this.currentUrl = event.urlAfterRedirects;
         this.showHomeIcon = this.currentUrl !== "/";
-        this.showCartIcon = this.currentUrl !== "/login";
+        this.showCartIcon = this.currentUrl !== "/login"; //Used for login icon and cart icon
       });
   }
   toggleCartPreview() {
