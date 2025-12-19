@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../../core/services/auth.service';
+import {KeycloakService } from '../../../core/services/keycloack.service';
 @Component({
   selector: 'app-user-menu',
   imports: [CommonModule],
@@ -10,11 +10,11 @@ import { AuthService } from '../../../core/services/auth.service';
 export class UserMenuComponent {
   @Input() showMenu: boolean = false;
   
-  user$ = this.auth.user$;
+  user$ = KeycloakService.tokenParsed();
 
-  constructor(private auth:AuthService) { }
+  constructor() { }
   logout() {
-    this.auth.logout();
+    KeycloakService.logout();
     this.showMenu = false;
   }
 }

@@ -1,4 +1,4 @@
-<div *ngIf="user$ | async as user">
+<div *ngIf="user$ as user">
   <div class="topnav">
     <div class="left">
       <h1 class="title">Angular E-commerce Test</h1>
@@ -12,10 +12,8 @@
         <button class="inline-block" (click)="toggleCartPreview()"><fa-icon [icon]="icons['cart']"></fa-icon></button>
         <app-cart-viewer [isOpen]="opened" (closedFromViewer)="toggleCartPreview()"></app-cart-viewer>
       }
-      @if (showCartIcon){
-      <a [routerLink]="!user.logged ? 'login':null" class="inline-block" (click)="user.logged ? toggleUserMenu(): null"><fa-icon class="custom-icon-color"
-          [icon]="user.logged ? icons['user'] :icons['login']"></fa-icon></a>
-      }
+      <a class="inline-block" (click)="toggleUserMenu()"><fa-icon class="custom-icon-color"
+          [icon]="icons['user']"></fa-icon></a>
       <app-user-menu [showMenu]="showUserMenu"></app-user-menu>
     </div>
   </div>
