@@ -1,10 +1,12 @@
-import { Component } from "@angular/core";
+import { APP_INITIALIZER, Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TopBarComponent } from "./features/top-bar-utilities/top-bar/top-bar.component";
 import { RouterOutlet } from '@angular/router';
 import { ToastComponent } from "./features/toast.component/toast.component";
 import { ToastService } from "./core/services/toast.service";
+
+
 
 
 
