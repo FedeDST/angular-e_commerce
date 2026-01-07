@@ -34,7 +34,7 @@ export class CartComponent {
   remove(id: number) {
     this.cartStore.remove(id);
     this.total = this.cartStore.calculateTotal();
-    this.toastService.updateToast(this.toast,'Prodotto rimosso','S');
+    this.toastService.updateToast(this.toast,'Prodotto rimosso','E');
   }
   add(product:Product) {
     this.cartStore.add(product);
@@ -45,6 +45,6 @@ export class CartComponent {
   clear() {
     this.cartStore.clear();
     this.total = this.cartStore.calculateTotal();
-    this.toastService.updateToast(this.toast,'Carrello svuotato','S');
+    this.toastService.updateToast(this.toast,'Carrello svuotato','E');
   }
 }

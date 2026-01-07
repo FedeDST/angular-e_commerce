@@ -22,9 +22,9 @@ import { ToastService } from "./core/services/toast.service";
     ToastComponent
 ],
   template: `
+    <app-toast *ngIf="toast$ | async as toast"[toastObj]="toast"></app-toast>
     <div class="container mx-auto p-6">
       <app-top-bar></app-top-bar>
-      <app-toast *ngIf="toast$ | async as toast"[toastObj]="toast"></app-toast>
       <router-outlet></router-outlet>
     </div>
   `,
