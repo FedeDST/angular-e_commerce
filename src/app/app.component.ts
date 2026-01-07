@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TopBarComponent } from "./features/top-bar-utilities/top-bar/top-bar.component";
 import { RouterOutlet } from '@angular/router';
-import { ToastComponent } from "./features/toast.component/toast.component";
+import { ToastComponent } from "./features/toast/toast.component";
 import { ToastService } from "./core/services/toast.service";
 
 
