@@ -1,0 +1,16 @@
+<app-cart [hideButton]="true"></app-cart>
+<div class="grid grid-cols-1 gap-6">
+<form class="bg-white border rounded-lg shadow-md p-4 flex flex-col" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="nome" placeholder="Nome" />
+    <small class="text-red-600" *ngIf="customerForm.get('nome')?.touched && customerForm.get('nome')?.invalid">Il nome è un campo obbligatorio e deve essere lungo almeno 3 caratteri.</small>
+    <input type="text" formControlName="cognome" placeholder="Cognome" />
+    <small class="text-red-600" *ngIf="customerForm.get('cognome')?.touched && customerForm.get('cognome')?.invalid">Il cognome è un campo obbligatorio e deve essere lungo almeno 3 caratteri.</small>
+    <input type="email" formControlName="email" placeholder="Email" />
+    <small class="text-red-600" *ngIf="customerForm.get('email')?.touched && customerForm.get('email')?.invalid">L'email è un campo obbligatorio e deve avere il formato corretto.</small>
+    <input type="text" formControlName="indirizzo" placeholder="Es.Viale Europa 30 00100 RM" />
+    <small class="text-red-600" *ngIf="customerForm.get('indirizzo')?.touched && customerForm.get('indirizzo')?.invalid">L'indirizzo è un campo obbligatorio e deve essere lungo almeno 5 caratteri.</small>
+    <button class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors" type="submit" [ngClass]="{'bg-gray-400 cursor-not-allowed':customerForm.invalid}" [disabled]="customerForm.invalid">
+        Continua
+    </button>
+</form>
+</div>

@@ -1,0 +1,14 @@
+ <label>
+      <input type="radio" name="ship" (change)="select('standard')" />
+      Standard (€5)
+    </label>
+
+    <label>
+      <input type="radio" name="ship" (change)="select('express')" />
+      Express (€10)
+    </label>
+
+    <div class="flex gap-2 mt-4">
+      <button (click)="back()">Indietro</button>
+      <button [disabled]="!selected" (click)="next()">Avanti</button>
+    </div>
