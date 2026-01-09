@@ -1,0 +1,15 @@
+<form [formGroup]="paymentForm" class="bg-white border rounded-lg shadow-md p-4 flex flex-col" (ngSubmit)="next()">
+  <input type="text" formControlName="cardName" placeholder="Nome della carta" />
+  <small class="text-red-600" *ngIf="paymentForm.get('cardName')?.touched && paymentForm.get('cardName')?.invalid">Il
+    nome della carta è un campo obbligatorio e deve essere lungo almeno 4 caratteri.</small>
+    <input type="text" formControlName="cardNumber" placeholder="Numero della carta" maxlength="16"/>
+  <small class="text-red-600" *ngIf="paymentForm.get('cardNumber')?.touched && paymentForm.get('cardNumber')?.invalid">Il
+    nome della carta è un campo obbligatorio e deve essere lungo esattamente 16 caratteri.</small>
+  <div class="flex gap-2 p-4">
+    <button class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors p-1"
+      (click)="back()">Indietro</button>
+    <button type="submit" class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors p-1"
+      [ngClass]="{'bg-gray-400 cursor-not-allowed':paymentForm.invalid}" [disabled]="paymentForm.invalid">Avanti</button>
+  </div>
+
+</form>

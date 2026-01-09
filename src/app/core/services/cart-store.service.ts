@@ -6,6 +6,12 @@ import { Product } from "../../core/models/product.model";
 export class CartStoreService {
   private _cart = new BehaviorSubject<Product[]>([]);
   cart$ = this._cart.asObservable();
+  
+  prepopulateCart = () => {
+    if(this._cart.value.length == 0 && localStorage.getItem('cart')){
+      this._cart.next(JSON.parse(localStorage.getItem('cart')|| '[]'));
+    }
+  }
 
   add(product: Product) {
     if (this._cart.value.find((p) => p.id === product.id)) {
@@ -16,6 +22,7 @@ export class CartStoreService {
       product.quantity = 1;
       this._cart.next([...this._cart.value, product]);
     }
+    localStorage.setItem('cart',JSON.stringify(this._cart.value));
   }
 
   remove(id: number) {
@@ -25,6 +32,7 @@ export class CartStoreService {
       this._cart.value.find((p) => p.id === id)!.quantity--;
       this._cart.next([...this._cart.value]);
     }
+    this._cart.value.length == 0 ? this.clear() : localStorage.setItem('cart',JSON.stringify(this._cart.value));
   }
   calculateTotal(): number {
     return parseFloat(this._cart.value.reduce(
@@ -33,6 +41,7 @@ export class CartStoreService {
 
   clear() {
     this._cart.next([]);
+    localStorage.removeItem('cart');
   }
   countProductInCart(id: number, quantity: number): number {
     return this._cart.value.filter((product) => product.id === id) ? quantity + 1: quantity;

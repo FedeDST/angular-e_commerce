@@ -3,10 +3,10 @@ import { Step1Component } from "./steps/step1/step1.component";
 import { CheckoutStore } from '../../core/services/checkout-store.service';
 import { CommonModule } from '@angular/common';
 import { Step2Component } from './steps/step2/step2.component';
-
+import { Step3Component } from './steps/step3/step3.component';
 @Component({
   selector: 'app-chekout.component',
-  imports: [Step1Component, CommonModule, Step2Component],
+  imports: [Step1Component, CommonModule, Step2Component,Step3Component],
   templateUrl: './chekout.component.html',
   styleUrl: './chekout.component.css'
 })

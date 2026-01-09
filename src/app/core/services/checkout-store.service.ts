@@ -10,7 +10,6 @@ import {
 export class CheckoutStore {
   private readonly initialState: CheckoutState = {
     step: 1,
-    customer: {nome:'',cognome:'',email:'',indirizzo:''}
   };
 
   private readonly _state = signal<CheckoutState>(this.initialState);
@@ -28,35 +27,33 @@ export class CheckoutStore {
     });
   }
 
-  setCustomer(customer: CustomerInfo) {
+  setCustomer = (customer: CustomerInfo) =>
     this._state.update(s => ({ ...s, customer }));
-  }
+  
   getCustomer = () => this._state().customer;
 
-  setShipping(shipping: ShippingInfo) {
+  setShipping = (shipping: ShippingInfo) =>
     this._state.update(s => ({ ...s, shipping }));
-  }
 
-  setPayment(payment: PaymentInfo) {
+  getShipping = () => this._state().shipping;
+
+  setPayment = (payment: PaymentInfo) =>
     this._state.update(s => ({ ...s, payment }));
-  }
 
-  nextStep() {
+  getPayment = () => this._state().payment;
+
+  nextStep = () => 
     this._state.update(s => ({
       ...s,
       step: Math.min(s.step + 1, 4),
     }));
-  }
 
-  prevStep() {
+  prevStep = () => 
     this._state.update(s => ({
       ...s,
       step: Math.max(s.step - 1, 1),
     }));
-          console.log('prova',this._state());
-  }
-
-  reset() {
+  reset = () => {
     this._state.set(this.initialState);
     localStorage.removeItem('checkout');
   }

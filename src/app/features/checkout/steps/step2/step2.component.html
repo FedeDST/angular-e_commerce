@@ -1,4 +1,6 @@
- <label>
+<div class="bg-white border rounded-lg shadow-md p-4 flex flex-col">
+  <div class="flex gap-2 p-4">
+    <label>
       <input type="radio" name="ship" (change)="select('standard')" />
       Standard (€5)
     </label>
@@ -7,8 +9,11 @@
       <input type="radio" name="ship" (change)="select('express')" />
       Express (€10)
     </label>
-
-    <div class="flex gap-2 mt-4">
-      <button (click)="back()">Indietro</button>
-      <button [disabled]="!selected" (click)="next()">Avanti</button>
-    </div>
+  </div>
+  <div class="flex gap-2 p-4">
+    <button class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors p-1"
+      (click)="back()">Indietro</button>
+    <button class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors p-1"
+      [disabled]="!selected" (click)="next()">Avanti</button>
+  </div>
+</div>

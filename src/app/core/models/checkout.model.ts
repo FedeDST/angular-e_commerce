@@ -11,8 +11,8 @@ export interface ShippingInfo {
 }
 
 export interface PaymentInfo {
-  cardName: string;
-  cardNumber: string; // mock
+  cardName: string | undefined;
+  cardNumber: string | undefined; // mock
 }
 
 export interface CheckoutState {
