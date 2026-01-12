@@ -1,19 +1,21 @@
-<div class="bg-white border rounded-lg shadow-md p-4 flex flex-col">
+<form [formGroup]="shippingForm" class="bg-white border rounded-lg shadow-md p-4 flex flex-col">
+      <label class="text-lg font-semibold">Seleziona il metodo di spedizione:</label>
   <div class="flex gap-2 p-4">
     <label>
-      <input type="radio" name="ship" (change)="select('standard')" />
+      <input type="radio" name="ship" formControlName="ship" value="standard" />
       Standard (€5)
     </label>
 
     <label>
-      <input type="radio" name="ship" (change)="select('express')" />
+      <input type="radio" name="ship" formControlName="ship" value="express" />
       Express (€10)
     </label>
   </div>
+  @if(!isDetail){
   <div class="flex gap-2 p-4">
     <button class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors p-1"
       (click)="back()">Indietro</button>
-    <button class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors p-1"
-      [disabled]="!selected" (click)="next()">Avanti</button>
-  </div>
-</div>
+    <button class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors p-1" [ngClass]="{'bg-gray-400 cursor-not-allowed': shippingForm.invalid}"
+      [disabled]="shippingForm.invalid" (click)="next()">Avanti</button>
+  </div>}
+</form>

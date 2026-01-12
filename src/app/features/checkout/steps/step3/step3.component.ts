@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CheckoutStore } from '../../../../core/services/checkout-store.service';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './step3.component.css'
 })
 export class Step3Component {
-
+  @Input() isDetail: boolean = false;
   constructor(private checkoutStore: CheckoutStore,private fb:FormBuilder) {}
 
   paymentForm = this.fb.nonNullable.group({

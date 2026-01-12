@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CheckoutStore } from '../../../../core/services/checkout-store.service';
 import { CommonModule } from '@angular/common';
 
@@ -9,22 +9,21 @@ import { CommonModule } from '@angular/common';
   templateUrl: './step2.component.html',
   styleUrl: './step2.component.css'
 })
-export class Step2Component {
+export class Step2Component{
+ @Input() isDetail: boolean = false;
+ selected: string | undefined = undefined;
 
- selected: 'standard' | 'express' | null = null;
+  constructor(private checkoutStore: CheckoutStore,private fb:FormBuilder) {}
+  shippingForm = this.fb.nonNullable.group({
+    ship: [this.checkoutStore.getShipping()?.method || '', Validators.required],
+  });
 
-  constructor(private checkoutStore: CheckoutStore) {}
-
-  select(method: 'standard' | 'express') {
-    this.selected = method;
-  }
 
   next() {
-    if (!this.selected) return;
 
     this.checkoutStore.setShipping({
-      method: this.selected,
-      cost: this.selected === 'express' ? 10 : 5,
+      method: this.shippingForm.value.ship,
+      cost: this.shippingForm.value.ship === 'express' ? 10 : 5,
     });
     this.checkoutStore.nextStep();
   }

@@ -6,7 +6,7 @@ export interface CustomerInfo {
 }
 
 export interface ShippingInfo {
-  method: 'standard' | 'express';
+  method: string | undefined;
   cost: number;
 }
 

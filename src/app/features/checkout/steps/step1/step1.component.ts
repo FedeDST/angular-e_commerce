@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { CartComponent } from "../../../cart/cart.component";
+import { Component, Input} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CheckoutStore } from '../../../../core/services/checkout-store.service';
 import { CommonModule } from '@angular/common';
@@ -7,11 +6,12 @@ import { CustomerInfo } from '../../../../core/models/checkout.model';
 
 @Component({
   selector: "app-step1",
-  imports: [CartComponent, ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: "./step1.component.html",
   styleUrl: "./step1.component.css",
 })
 export class Step1Component {
+  @Input() isDetail: boolean = false;
   customerData:CustomerInfo  = {
     nome:'',
     cognome:'',

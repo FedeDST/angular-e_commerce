@@ -15,7 +15,7 @@ import { ToastService } from '../../core/services/toast.service';
   styleUrls: ["./cart.component.css"],
 })
 export class CartComponent implements OnInit {
-  @Input() hideButton: boolean = false;
+  @Input() isDetail: boolean = false;
   cart$ = this.cartStore.cart$;
   total = 0;
 
