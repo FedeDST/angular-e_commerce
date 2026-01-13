@@ -21,7 +21,8 @@ export class Step3Component {
   next() {
     this.checkoutStore.setPayment({
       cardName: this.paymentForm.value.cardName ?? '',
-      cardNumber:this.paymentForm.value.cardNumber ?? ''
+      cardNumber:this.paymentForm.value.cardNumber ?? '',
+      valid: this.paymentForm.valid
     });
     this.checkoutStore.nextStep();
   }
@@ -29,4 +30,11 @@ export class Step3Component {
   back() {
     this.checkoutStore.prevStep();
   }
+  setValidity = () => {
+    this.checkoutStore.setPayment({
+      cardName: this.paymentForm.value.cardName ?? '',
+      cardNumber:this.paymentForm.value.cardNumber ?? '',
+      valid: this.paymentForm.valid
+    });
+    }
 }

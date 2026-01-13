@@ -24,6 +24,7 @@ export class Step2Component{
     this.checkoutStore.setShipping({
       method: this.shippingForm.value.ship,
       cost: this.shippingForm.value.ship === 'express' ? 10 : 5,
+      valid: this.shippingForm.valid
     });
     this.checkoutStore.nextStep();
   }

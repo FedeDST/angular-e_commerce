@@ -4,19 +4,19 @@
     <label class="text-sm text-gray-600 mb-4">Inserisci i tuoi dati per procedere con l'ordine.</label>
 
     <label class="text-sm font-medium mb-2" for="nome">Nome</label>
-    <input type="text" formControlName="nome" placeholder="Inserisci il nome" id="nome"/>
+    <input type="text" formControlName="nome" placeholder="Inserisci il nome" id="nome" (change)="setValidity()"/>
     <small class="text-red-600" *ngIf="customerForm.get('nome')?.touched && customerForm.get('nome')?.invalid">Il nome è un campo obbligatorio e deve essere lungo almeno 3 caratteri.</small>
     
     <label class="text-sm font-medium mb-2" for="cognome">Cognome</label>
-    <input type="text" formControlName="cognome" placeholder="Inserisci il cognome" id="cognome"/>
+    <input type="text" formControlName="cognome" placeholder="Inserisci il cognome" id="cognome" (change)="setValidity()"/>
     <small class="text-red-600" *ngIf="customerForm.get('cognome')?.touched && customerForm.get('cognome')?.invalid">Il cognome è un campo obbligatorio e deve essere lungo almeno 3 caratteri.</small>
     
     <label class="text-sm font-medium mb-2" for="email">Email</label>
-    <input type="email" formControlName="email" placeholder="Inserisci l'email" id="email" />
+    <input type="email" formControlName="email" placeholder="Inserisci l'email" id="email" (change)="setValidity()"/>
     <small class="text-red-600" *ngIf="customerForm.get('email')?.touched && customerForm.get('email')?.invalid">L'email è un campo obbligatorio e deve avere il formato corretto.</small>
     
     <label class="text-sm font-medium mb-2" for="indirizzo">Indirizzo</label>
-    <input type="text" formControlName="indirizzo" placeholder="Es.Viale Europa 30 00100 RM" id="indirizzo"/>
+    <input type="text" formControlName="indirizzo" placeholder="Es.Viale Europa 30 00100 RM" id="indirizzo" (change)="setValidity()"/>
     <small class="text-red-600" *ngIf="customerForm.get('indirizzo')?.touched && customerForm.get('indirizzo')?.invalid">L'indirizzo è un campo obbligatorio e deve essere lungo almeno 5 caratteri.</small>
     <div class="flex gap-2">
     @if(!isDetail){<button class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors p-1 mt-1" type="submit" [ngClass]="{'bg-gray-400 cursor-not-allowed':customerForm.invalid}" [disabled]="customerForm.invalid">

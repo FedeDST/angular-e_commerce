@@ -10,6 +10,7 @@ import {
 export class CheckoutStore {
   private readonly initialState: CheckoutState = {
     step: 1,
+    valid: false
   };
 
   private readonly _state = signal<CheckoutState>(this.initialState);

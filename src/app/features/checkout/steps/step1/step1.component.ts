@@ -16,7 +16,8 @@ export class Step1Component {
     nome:'',
     cognome:'',
     email:'',
-    indirizzo:''
+    indirizzo:'',
+    valid:false
   };
   constructor(private fb: FormBuilder, private checkoutStore: CheckoutStore) {}
 
@@ -32,7 +33,16 @@ export class Step1Component {
       cognome: this.customerForm.value.cognome ?? "",
       email: this.customerForm.value.email ?? "",
       indirizzo: this.customerForm.value.indirizzo ?? "",
+      valid: this.customerForm.valid
     });
     this.checkoutStore.nextStep();
   }
-}
+  setValidity = () => {
+    this.checkoutStore.setCustomer({
+      nome: this.customerForm.value.nome ?? "",
+      cognome: this.customerForm.value.cognome ?? "",
+      email: this.customerForm.value.email ?? "",
+      indirizzo: this.customerForm.value.indirizzo ?? "",
+      valid: this.customerForm.valid
+    });
+    }}
