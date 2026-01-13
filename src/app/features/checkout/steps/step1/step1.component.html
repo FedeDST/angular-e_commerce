@@ -19,7 +19,7 @@
     <input type="text" formControlName="indirizzo" placeholder="Es.Viale Europa 30 00100 RM" id="indirizzo" (change)="setValidity()"/>
     <small class="text-red-600" *ngIf="customerForm.get('indirizzo')?.touched && customerForm.get('indirizzo')?.invalid">L'indirizzo è un campo obbligatorio e deve essere lungo almeno 5 caratteri.</small>
     <div class="flex gap-2">
-    @if(!isDetail){<button class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors p-1 mt-1" type="submit" [ngClass]="{'bg-gray-400 cursor-not-allowed':customerForm.invalid}" [disabled]="customerForm.invalid">
+    @if(!isDetail){<button class="mt-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors p-1" type="submit" [ngClass]="{'bg-gray-400 cursor-not-allowed':customerForm.invalid}" [disabled]="customerForm.invalid">
         Continua
         </button>}
     </div>
