@@ -1,10 +1,11 @@
-<div *ngIf="user$ | async as user" class="cart-box-container fade" [ngClass]="showMenu ? 'show' : ''">
+<div *ngIf="user$ as user" class="cart-box-container fade" [ngClass]="showMenu ? 'show' : ''">
     <div class="triangle-up">
             <div class="cart-box text-black">
         <h1 class="mt-2 text-black">User Menu</h1>
-                <p>User name : {{user?.userInfo?.email}}</p>
-        
-                <p>User Role: {{user?.userInfo?.role}}</p>
+                <p>User name : {{user?.['email']}}</p>
+                <p>User Roles: </p>
+                @for(elem of user?.resource_access?.['account']?.['roles'];track elem){
+                <small class="flex">{{elem}}</small>}
         <button class="mt-2 bg-red-500 text-white px-4 py-2 rounded" (click)="logout()">Logout</button>
 
     </div>

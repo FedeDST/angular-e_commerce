@@ -1,8 +1,8 @@
 .toast-box {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
-    width: 100vh;
+    width: 250px;
     max-height: 400px;
     background-color: #fff;
     border: 1px solid #ccc;

@@ -30,6 +30,7 @@ export class ToastService {
   }
   showAndHideToast(toast: Toast): Toast {
     toast.visible = true;
+    this._toast.next(toast);
     setTimeout(() => {
       toast.visible = false;
       this._toast.next(toast);

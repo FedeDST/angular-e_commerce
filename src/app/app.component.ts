@@ -1,10 +1,12 @@
-import { Component } from "@angular/core";
+import { APP_INITIALIZER, Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TopBarComponent } from "./features/top-bar-utilities/top-bar/top-bar.component";
 import { RouterOutlet } from '@angular/router';
-import { ToastComponent } from "./features/toast.component/toast.component";
+import { ToastComponent } from "./features/toast/toast.component";
 import { ToastService } from "./core/services/toast.service";
+
+
 
 
 
@@ -20,9 +22,9 @@ import { ToastService } from "./core/services/toast.service";
     ToastComponent
 ],
   template: `
+    <app-toast *ngIf="toast$ | async as toast"[toastObj]="toast"></app-toast>
     <div class="container mx-auto p-6">
       <app-top-bar></app-top-bar>
-      <app-toast *ngIf="toast$ | async as toast"[toastObj]="toast"></app-toast>
       <router-outlet></router-outlet>
     </div>
   `,

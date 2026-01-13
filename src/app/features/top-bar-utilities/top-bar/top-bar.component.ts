@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { CartViewerComponent } from "../cart-viewer.component/cart-viewer.component";
-import { AuthService } from "../../../core/services/auth.service";
 import { UserMenuComponent } from "../../userMenu/user-menu/user-menu.component";
 import { NavigationEnd, Router, RouterLink } from "@angular/router";
 import { IconService } from "../../../core/services/icon.service";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { CommonModule } from "@angular/common";
 import { filter, Subscription } from "rxjs";
+import { KeycloakService } from "../../../core/services/keycloack.service";
 
 export interface User {
   email: string;
@@ -28,9 +28,9 @@ export interface User {
 export class TopBarComponent implements OnInit {
   opened: boolean = false;
   showUserMenu: boolean = false;
-  constructor(private auth: AuthService, private icon: IconService) {}
+  constructor( private icon: IconService) {}
   icons = this.icon.icons;
-  user$ = this.auth.user$;
+  user$ = KeycloakService.tokenParsed();
   private subscription!: Subscription;
   private router = inject(Router);
   showHomeIcon: boolean = false;
