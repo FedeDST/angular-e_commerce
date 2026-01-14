@@ -22,7 +22,7 @@
     Svuota carrello
   </button>
   }
-  <div class="cart-total py-3">Totale : ${{total$ | async}}</div>
+  <div class="cart-total py-3">Totale : ${{total$ | async}}  @if(isDetail && actualShippingCost() > 0){<small>di cui ${{actualShippingCost()}} di spedizione.</small>}</div>
   @if(!isDetail){
   <div class="mt-4">
     @if(cart.length > 0){

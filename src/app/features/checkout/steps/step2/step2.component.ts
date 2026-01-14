@@ -18,7 +18,13 @@ export class Step2Component{
     ship: [this.checkoutStore.getShipping()?.method || '', Validators.required],
   });
 
-
+  changeSelection() {
+    this.checkoutStore.setShipping({
+      method: this.shippingForm.value.ship,
+      cost: this.shippingForm.value.ship === 'express' ? 10 : 5,
+      valid: this.shippingForm.valid
+    });
+  }
   next() {
 
     this.checkoutStore.setShipping({

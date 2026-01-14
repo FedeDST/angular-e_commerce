@@ -2,12 +2,12 @@
       <label class="text-lg font-semibold">Seleziona il metodo di spedizione:</label>
   <div class="flex gap-2 p-4">
     <label>
-      <input type="radio" name="ship" formControlName="ship" value="standard" />
+      <input type="radio" name="ship" formControlName="ship" value="standard" [checked]="shippingForm.value.ship === 'standard'" (change)="changeSelection()"/>
       Standard (€5)
     </label>
 
     <label>
-      <input type="radio" name="ship" formControlName="ship" value="express" />
+      <input type="radio" name="ship" formControlName="ship" value="express" [checked]="shippingForm.value.ship === 'express'" (change)="changeSelection()"/>
       Express (€10)
     </label>
   </div>

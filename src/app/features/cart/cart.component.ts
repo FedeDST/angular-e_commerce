@@ -2,11 +2,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartStoreService } from '../../core/services/cart-store.service';
 import { Product } from '../../core/models/product.model';
-import { map} from 'rxjs';
+import { combineLatest, map} from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { IconService } from '../../core/services/icon.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ToastService } from '../../core/services/toast.service';
+import { CheckoutStore } from '../../core/services/checkout-store.service';
+import {toObservable } from '@angular/core/rxjs-interop';
 @Component({
   selector: "app-cart",
   standalone: true,
@@ -17,18 +19,24 @@ import { ToastService } from '../../core/services/toast.service';
 export class CartComponent implements OnInit {
   @Input() isDetail: boolean = false;
   cart$ = this.cartStore.cart$;
+  // CONVERTO IN OBSERVABLE IL COMPUTED DEL CHECKOUT STORE PER OTTENERE 
+  // IL COSTO DELLA SPEDIZIONE E POTERLO CONFRONTARE CON IL SIGNAL
+  shippingCost$ = toObservable(this.checkoutStore.shippingCost);
+  // USO IL COMPUTED DIRETTAMENTE NEL TEMPLATE
+  actualShippingCost = this.checkoutStore.shippingCost;
   total = 0;
 
-  total$ = this.cart$.pipe(
-    map((items) =>
-      items.reduce((sum, i) => sum + i.price * i.quantity, 0).toFixed(2)
+  total$ = combineLatest([this.cart$, this.shippingCost$]).pipe(
+    map(([items, shippingCost]) =>
+      items.reduce((sum, i) => sum + i.price * i.quantity + shippingCost, 0) .toFixed(2)
     )
   );
 
   constructor(
     private cartStore: CartStoreService,
     private icon: IconService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private checkoutStore: CheckoutStore
   ) {}
   ngOnInit(): void {
       this.cartStore.prepopulateCart();
