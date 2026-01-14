@@ -40,7 +40,8 @@ export class Step4Component {
     );
   };
   confirmOrder = () => {
-    this.toastService.updateToast(this.toast, "Acquisto effettuato", "S");
+    const message = $localize`Acquisto effettuato`;
+    this.toastService.updateToast(this.toast, message, "S");
     timer(2000).subscribe(() => {
     this.router.navigate(['']);
     this.checkoutStore.reset();

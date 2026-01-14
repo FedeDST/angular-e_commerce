@@ -41,7 +41,8 @@ export class ProductListComponent implements OnInit {
 
   addToCart(product: Product) {
     this.cartStore.add(product);
-    this.toastService.updateToast(this.toast,'Prodotto aggiunto','S');
+    const message = $localize`Prodotto aggiunto`;
+    this.toastService.updateToast(this.toast,message,'S');
 
   }
 

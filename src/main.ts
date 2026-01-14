@@ -6,6 +6,7 @@ import { routes } from './app/core/routes/routes';
 import { APP_INITIALIZER } from '@angular/core';
 import {KeycloakService}  from './app/core/services/keycloack.service';
 import { AuthInterceptor } from './app/core/interceptors/auth.interceptor';
+import '@angular/localize/init'; // Importa le funzionalità di localizzazione di Angular
 
 bootstrapApplication(AppComponent, {
   providers: [provideHttpClient(),provideRouter(routes),{

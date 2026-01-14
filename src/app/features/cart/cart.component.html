@@ -3,9 +3,9 @@
     @if(isDetail){
       <img [src]="p.image" alt="{{ p.title }}" class="h-20 object-contain mb-4" />
     }
-    {{ p.title }} - ${{ p.price }}
+    <span i18n="@@itemTitle">{{ p.title }}</span><span> - ${{ p.price }}</span>
     @if(isDetail){
-      Quantità x {{p.quantity}}
+      <p i18n="@@itemQuantity">Quantità x {{p.quantity}}</p>
     }
     <button class="ml-2 bg-transparent-500 text-white px-2 py-1 rounded" (click)="remove(p.id)">
       <fa-icon style="color:#ff0000" [icon]="icons['remove']"></fa-icon>
@@ -14,21 +14,21 @@
     <button class="ml-2 bg-transparent-500 text-white px-2 py-1 rounded" (click)="add(p)">
     <fa-icon style="color:#008000" [icon]="icons['add']"></fa-icon>
     </button>
-    <p>Totale Parziale : ${{ p.price * p.quantity }}</p>
+    <p i18n="@@partial">Totale Parziale : ${{ p.price * p.quantity }}</p>
   </div>
   @if(!isDetail){
-  <button [disabled]="cart.length === 0" [ngClass]="{'bg-red-500': cart.length > 0,
+  <button i18n="@@cartClear" [disabled]="cart.length === 0" [ngClass]="{'bg-red-500': cart.length > 0,
     'bg-gray-400 cursor-not-allowed': cart.length === 0}" class="mt-2 text-white px-4 py-2 rounded" (click)="clear()">
     Svuota carrello
   </button>
   }
-  <div class="cart-total py-3">Totale : ${{total$ | async}}  @if(isDetail && actualShippingCost() > 0){<small>di cui ${{actualShippingCost()}} di spedizione.</small>}</div>
+  <div i18n="@@total" class="cart-total py-3">Totale : ${{total$ | async}}  @if(isDetail && actualShippingCost() > 0){<small>di cui ${{actualShippingCost()}} di spedizione.</small>}</div>
   @if(!isDetail){
   <div class="mt-4">
     @if(cart.length > 0){
     <button [disabled]="cart.length === 0" class="text-white px-2 py-2 mt- rounded" [ngClass]="{'bg-green-500': cart.length > 0,
     'bg-gray-400 cursor-not-allowed': cart.length === 0}">
-    <a [routerLink]="'checkout'">
+    <a i18n="@@goToCheckout" [routerLink]="'checkout'">
       Vai al checkout.</a>
     </button>
     }

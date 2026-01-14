@@ -47,17 +47,20 @@ export class CartComponent implements OnInit {
   remove(id: number) {
     this.cartStore.remove(id);
     this.total = this.cartStore.calculateTotal();
-    this.toastService.updateToast(this.toast, "Prodotto rimosso", "E");
+    const message = $localize`Prodotto Rimosso`;
+    this.toastService.updateToast(this.toast, message, "E");
   }
   add(product: Product) {
     this.cartStore.add(product);
     this.total = this.cartStore.calculateTotal();
-    this.toastService.updateToast(this.toast, "Prodotto aggiunto", "S");
+    const message = $localize`Prodotto aggiunto`;
+    this.toastService.updateToast(this.toast, message, "S");
   }
 
   clear() {
     this.cartStore.clear();
     this.total = this.cartStore.calculateTotal();
-    this.toastService.updateToast(this.toast, "Carrello svuotato", "E");
+    const message = $localize`Carrello svuotato`;
+    this.toastService.updateToast(this.toast, message, "E");
   }
 }
