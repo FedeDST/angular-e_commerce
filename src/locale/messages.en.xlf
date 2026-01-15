@@ -222,6 +222,15 @@
         <target>Purchase completed</target>
       </trans-unit>
 
+      <trans-unit id="filterSearch" datatype="html">
+        <source>Cerca prodotto...</source>
+        <target>Search product...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/products/product-search/product-search.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>
