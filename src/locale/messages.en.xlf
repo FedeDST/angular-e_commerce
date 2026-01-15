@@ -1,306 +1,227 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+  <file source-language="it" target-language="en" datatype="plaintext" original="ng2.template">
     <body>
+
       <trans-unit id="itemTitle" datatype="html">
         <source><x id="INTERPOLATION" equiv-text="{{ p.title }}"/></source>
         <target><x id="INTERPOLATION" equiv-text="{{ p.title }}"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/cart/cart.component.html</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
       </trans-unit>
+
       <trans-unit id="itemQuantity" datatype="html">
         <source>Quantità x <x id="INTERPOLATION" equiv-text="{{p.quantity}}"/></source>
         <target>Quantity x <x id="INTERPOLATION" equiv-text="{{p.quantity}}"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/cart/cart.component.html</context>
-          <context context-type="linenumber">8,10</context>
-        </context-group>
       </trans-unit>
+
       <trans-unit id="partial" datatype="html">
         <source>Totale Parziale : $<x id="INTERPOLATION" equiv-text="{{ p.price * p.quantity }}"/></source>
         <target>Subtotal: $<x id="INTERPOLATION" equiv-text="{{ p.price * p.quantity }}"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/cart/cart.component.html</context>
-          <context context-type="linenumber">17,19</context>
-        </context-group>
       </trans-unit>
+
       <trans-unit id="cartClear" datatype="html">
         <source> Svuota carrello </source>
-        <target> Clear Cart </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/cart/cart.component.html</context>
-          <context context-type="linenumber">22,25</context>
-        </context-group>
+        <target> Clear cart </target>
       </trans-unit>
+
       <trans-unit id="total" datatype="html">
-        <source>Totale : $<x id="INTERPOLATION" equiv-text="{{total$ | async}}"/> <x id="START_BLOCK_IF" equiv-text="@if(isDetail &amp;&amp; actualShippingCost() &gt; 0){"/><x id="START_SMALL_TEXT" ctype="x-small" equiv-text="&lt;small&gt;"/>di cui $<x id="INTERPOLATION_1" equiv-text="{{actualShippingCost()}}"/> di spedizione.<x id="CLOSE_SMALL_TEXT" ctype="x-small" equiv-text="&lt;/small&gt;"/><x id="CLOSE_BLOCK_IF" equiv-text="}"/></source>
-        <target>Total: $<x id="INTERPOLATION" equiv-text="{{total$ | async}}"/> <x id="START_BLOCK_IF" equiv-text="@if(isDetail &amp;&amp; actualShippingCost() &gt; 0){"/><x id="START_SMALL_TEXT" ctype="x-small" equiv-text="&lt;small&gt;"/>including $<x id="INTERPOLATION_1" equiv-text="{{actualShippingCost()}}"/> shipping.<x id="CLOSE_SMALL_TEXT" ctype="x-small" equiv-text="&lt;/small&gt;"/><x id="CLOSE_BLOCK_IF" equiv-text="}"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/cart/cart.component.html</context>
-          <context context-type="linenumber">25,26</context>
-        </context-group>
+        <source>
+          Totale : $<x id="INTERPOLATION" equiv-text="{{total$ | async}}"/>
+          <x id="START_BLOCK_IF" equiv-text="@if(isDetail &amp;&amp; actualShippingCost() &gt; 0){"/>
+          <x id="START_SMALL_TEXT" ctype="x-small" equiv-text="&lt;small&gt;"/>
+          di cui $<x id="INTERPOLATION_1" equiv-text="{{actualShippingCost()}}"/> di spedizione.
+          <x id="CLOSE_SMALL_TEXT" ctype="x-small" equiv-text="&lt;/small&gt;"/>
+          <x id="CLOSE_BLOCK_IF" equiv-text="}"/>
+        </source>
+        <target>
+          Total: $<x id="INTERPOLATION" equiv-text="{{total$ | async}}"/>
+          <x id="START_BLOCK_IF" equiv-text="@if(isDetail &amp;&amp; actualShippingCost() &gt; 0){"/>
+          <x id="START_SMALL_TEXT" ctype="x-small" equiv-text="&lt;small&gt;"/>
+          including $<x id="INTERPOLATION_1" equiv-text="{{actualShippingCost()}}"/> shipping.
+          <x id="CLOSE_SMALL_TEXT" ctype="x-small" equiv-text="&lt;/small&gt;"/>
+          <x id="CLOSE_BLOCK_IF" equiv-text="}"/>
+        </target>
       </trans-unit>
+
       <trans-unit id="goToCheckout" datatype="html">
         <source> Vai al checkout.</source>
         <target> Go to checkout.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/cart/cart.component.html</context>
-          <context context-type="linenumber">32,33</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="4983379385161270565" datatype="html">
+
+      <trans-unit id="4983379385161270565">
         <source>Prodotto Rimosso</source>
-        <target>Product Removed</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/cart/cart.component.ts</context>
-          <context context-type="linenumber">50</context>
-        </context-group>
+        <target>Product removed</target>
       </trans-unit>
-      <trans-unit id="7573353348625505353" datatype="html">
+
+      <trans-unit id="7573353348625505353">
         <source>Prodotto aggiunto</source>
-        <target>Product Added</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/cart/cart.component.ts</context>
-          <context context-type="linenumber">56</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/products/product-list/product-list.component.ts</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
+        <target>Product added</target>
       </trans-unit>
-      <trans-unit id="3305710880308394473" datatype="html">
+
+      <trans-unit id="3305710880308394473">
         <source>Carrello svuotato</source>
-        <target>Cart Emptied</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/cart/cart.component.ts</context>
-          <context context-type="linenumber">63</context>
-        </context-group>
+        <target>Cart cleared</target>
       </trans-unit>
-      <trans-unit id="step1Title" datatype="html">
+
+      <trans-unit id="step1Title">
         <source>Dettagli Cliente</source>
-        <target>Customer Details</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">3,4</context>
-        </context-group>
+        <target>Customer details</target>
       </trans-unit>
-      <trans-unit id="step1SubTitle" datatype="html">
+
+      <trans-unit id="step1SubTitle">
         <source>Inserisci i tuoi dati per procedere con l&apos;ordine.</source>
         <target>Enter your details to proceed with the order.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">4,6</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="step1Name" datatype="html">
+
+      <trans-unit id="step1Name">
         <source>Nome</source>
-        <target>First Name</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">6,7</context>
-        </context-group>
+        <target>First name</target>
       </trans-unit>
-      <trans-unit id="step1NamePlaceholder" datatype="html">
+
+      <trans-unit id="step1NamePlaceholder">
         <source>Inserisci il nome</source>
-        <target>Enter your first name</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
+        <target>Enter first name</target>
       </trans-unit>
-      <trans-unit id="step1InvalidName" datatype="html">
+
+      <trans-unit id="step1InvalidName">
         <source>Il nome è un campo obbligatorio e deve essere lungo almeno 3 caratteri.</source>
-        <target>The first name is required and must be at least 3 characters long.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">8,10</context>
-        </context-group>
+        <target>First name is required and must be at least 3 characters long.</target>
       </trans-unit>
-      <trans-unit id="step1Surname" datatype="html">
+
+      <trans-unit id="step1Surname">
         <source>Cognome</source>
-        <target>Last Name</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">10,11</context>
-        </context-group>
+        <target>Last name</target>
       </trans-unit>
-      <trans-unit id="step1SurnamePlaceholder" datatype="html">
+
+      <trans-unit id="step1SurnamePlaceholder">
         <source>Inserisci il cognome</source>
-        <target>Enter your last name</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
+        <target>Enter last name</target>
       </trans-unit>
-      <trans-unit id="step1InvalidSurname" datatype="html">
+
+      <trans-unit id="step1InvalidSurname">
         <source>Il cognome è un campo obbligatorio e deve essere lungo almeno 3 caratteri.</source>
-        <target>The last name is required and must be at least 3 characters long.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">12,14</context>
-        </context-group>
+        <target>Last name is required and must be at least 3 characters long.</target>
       </trans-unit>
-      <trans-unit id="step1Email" datatype="html">
+
+      <trans-unit id="step1Email">
         <source>Email</source>
         <target>Email</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">14,15</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="step1EmailPlaceholder" datatype="html">
+
+      <trans-unit id="step1EmailPlaceholder">
         <source>Inserisci l&apos;email</source>
-        <target>Enter your email</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
+        <target>Enter email</target>
       </trans-unit>
-      <trans-unit id="step1InvalidEmail" datatype="html">
+
+      <trans-unit id="step1InvalidEmail">
         <source>L&apos;email è un campo obbligatorio e deve avere il formato corretto.</source>
-        <target>Email is required and must be in a valid format.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">16,18</context>
-        </context-group>
+        <target>Email is required and must be valid.</target>
       </trans-unit>
-      <trans-unit id="step1Address" datatype="html">
+
+      <trans-unit id="step1Address">
         <source>Indirizzo</source>
         <target>Address</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">18,19</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="step1AddressPlaceholder" datatype="html">
+
+      <trans-unit id="step1AddressPlaceholder">
         <source>Es.Viale Europa 30 00100 RM</source>
         <target>e.g. Viale Europa 30 00100 RM</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="step1InvalidAddress" datatype="html">
+
+      <trans-unit id="step1InvalidAddress">
         <source>L&apos;indirizzo è un campo obbligatorio e deve essere lungo almeno 5 caratteri.</source>
-        <target>The address is required and must be at least 5 characters long.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">20,21</context>
-        </context-group>
+        <target>Address is required and must be at least 5 characters long.</target>
       </trans-unit>
-      <trans-unit id="step1Continue" datatype="html">
+
+      <trans-unit id="step1Continue">
         <source> Continua </source>
         <target> Continue </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step1/step1.component.html</context>
-          <context context-type="linenumber">23,24</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="step2Title" datatype="html">
+
+      <trans-unit id="step2Title">
         <source>Seleziona il metodo di spedizione:</source>
         <target>Select shipping method:</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step2/step2.component.html</context>
-          <context context-type="linenumber">2,3</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="step2Back" datatype="html">
+
+      <trans-unit id="step2Back">
         <source>Indietro</source>
         <target>Back</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step2/step2.component.html</context>
-          <context context-type="linenumber">17,18</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="step2Next" datatype="html">
+
+      <trans-unit id="step2Next">
         <source>Avanti</source>
         <target>Next</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step2/step2.component.html</context>
-          <context context-type="linenumber">19,21</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="step3Title" datatype="html">
+
+      <trans-unit id="step3Title">
         <source>Dettagli di pagamento</source>
-        <target>Payment Details</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step3/step3.component.html</context>
-          <context context-type="linenumber">2,4</context>
-        </context-group>
+        <target>Payment details</target>
       </trans-unit>
-      <trans-unit id="step3CardName" datatype="html">
+
+      <trans-unit id="step3CardName">
         <source>Nome della carta</source>
-        <target>Cardholder Name</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step3/step3.component.html</context>
-          <context context-type="linenumber">4,5</context>
-        </context-group>
+        <target>Cardholder name</target>
       </trans-unit>
-      <trans-unit id="step3CardNamePlaceholder" datatype="html">
+
+      <trans-unit id="step3CardNamePlaceholder">
         <source>Inserisci il nome della carta</source>
         <target>Enter cardholder name</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step3/step3.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="step3InvalidCardName" datatype="html">
+
+      <trans-unit id="step3InvalidCardName">
         <source>Il nome della carta è un campo obbligatorio e deve essere lungo almeno 4 caratteri.</source>
-        <target>The cardholder name is required and must be at least 4 characters long.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step3/step3.component.html</context>
-          <context context-type="linenumber">7,9</context>
-        </context-group>
+        <target>Cardholder name is required and must be at least 4 characters long.</target>
       </trans-unit>
-      <trans-unit id="step3CardNumber" datatype="html">
+
+      <trans-unit id="step3CardNumber">
         <source>Numero della carta</source>
-        <target>Card Number</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step3/step3.component.html</context>
-          <context context-type="linenumber">9,10</context>
-        </context-group>
+        <target>Card number</target>
       </trans-unit>
-      <trans-unit id="step3CardNumberPlaceholder" datatype="html">
+
+      <trans-unit id="step3CardNumberPlaceholder">
         <source>Inserisci il numero della carta</source>
         <target>Enter card number</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step3/step3.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="step3InvalidCardNumber" datatype="html">
+
+      <trans-unit id="step3InvalidCardNumber">
         <source>Il nome della carta è un campo obbligatorio e deve essere lungo esattamente 16 caratteri.</source>
-        <target>The card number is required and must be exactly 16 characters long.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step3/step3.component.html</context>
-          <context context-type="linenumber">12,14</context>
-        </context-group>
+        <target>Card number is required and must be exactly 16 characters long.</target>
       </trans-unit>
-      <trans-unit id="step3Back" datatype="html">
+
+      <trans-unit id="step3Back">
         <source>Indietro</source>
         <target>Back</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step3/step3.component.html</context>
-          <context context-type="linenumber">16,17</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="step3Next" datatype="html">
+
+      <trans-unit id="step3Next">
         <source>Avanti</source>
         <target>Next</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step3/step3.component.html</context>
-          <context context-type="linenumber">18,20</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="step4Title" datatype="html">
+
+      <trans-unit id="step4Title">
         <source>Riepilogo Ordine</source>
-        <target>Order Summary</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/features/checkout/steps/step4/step4.component.html</context>
-          <context context-type="linenumber">2,3</context>
-        </context-group>
+        <target>Order summary</target>
       </trans-unit>
-      <trans-unit id="step4ConfirmOrder" datatype="html">
-        <source>
+
+      <trans-unit id="step4ConfirmOrder">
+        <source> Conferma Ordine</source>
+        <target> Confirm order</target>
+      </trans-unit>
+
+      <trans-unit id="step4Back">
+        <source> Indietro</source>
+        <target> Back</target>
+      </trans-unit>
+
+      <trans-unit id="step4Reset">
+        <source> Ritorna alla selezione dei prodotti</source>
+        <target> Back to product selection</target>
+      </trans-unit>
+
+      <trans-unit id="7651394492551077474">
+        <source>Acquisto effettuato</source>
+        <target>Purchase completed</target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

@@ -1,68 +1,83 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
   "cli": {
     "analytics": "1e1de97b-a744-405a-8b5a-0397bb3d01ce"
   },
   "newProjectRoot": "projects",
   "projects": {
     "demo": {
+          "i18n": {
+      "sourceLocale": {
+        "code": "it",
+        "baseHref": "/it/"
+      },
+      "locales": {
+        "en": {
+          "translation": "src/locale/messages.en.xlf",
+          "baseHref": "/en/"
+        }
+      }
+    },
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
-          "configurations": {
-            "development": {
-              "extractLicenses": false,
-              "namedChunks": true,
-              "optimization": false,
-              "sourceMap": true
-            },
-            "production": {
-              "aot": true,
-              "extractLicenses": true,
-              "namedChunks": false,
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false
-            }
-          },
           "options": {
-            "assets": [],
+            "outputPath": "dist/demo",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "outputPath": "dist/demo",
             "polyfills": ["zone.js", "@angular/localize/init"],
-            "scripts": [],
+            "tsConfig": "tsconfig.app.json",
             "styles": ["src/global_styles.css"],
-            "tsConfig": "tsconfig.app.json"
+            "assets": [],
+            "localize": true
+          },
+          "configurations": {
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "extractLicenses": false
+            },
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "aot": true
+            },
+            "en": {
+              "localize": ["en"]
+            },
+            "it": {
+              "localize": ["it"]
+            }
           }
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "defaultConfiguration": "development",
           "configurations": {
             "development": {
               "buildTarget": "demo:build:development"
             },
+            "en": {
+              "buildTarget": "demo:build:en"
+            },
+            "it": {
+              "buildTarget": "demo:build:it"
+            },
             "production": {
               "buildTarget": "demo:build:production"
             }
-          },
-          "defaultConfiguration": "development"
+          }
         }
-      },
-      "prefix": "app",
-      "projectType": "application",
-      "root": "",
-      "schematics": {},
-      "sourceRoot": "src"
-    },
-    "i18n": {
-      "projectType": "application",
-      "root": "",
-      "sourceLocale": "it",
-      "locales": {
-        "en": "src/locale/messages.en.xlf"
       }
     }
-  },
-  "version": 1
+  }
 }
