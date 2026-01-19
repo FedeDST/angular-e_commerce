@@ -5,7 +5,7 @@
     }
     {{ p.title }} - ${{ p.price }}
     @if(isDetail){
-      Quantità x {{p.quantity}}
+      {{'itemQuantity' | translate}}{{p.quantity }}
     }
     <button class="ml-2 bg-transparent-500 text-white px-2 py-1 rounded" (click)="remove(p.id)">
       <fa-icon style="color:#ff0000" [icon]="icons['remove']"></fa-icon>
@@ -14,22 +14,22 @@
     <button class="ml-2 bg-transparent-500 text-white px-2 py-1 rounded" (click)="add(p)">
     <fa-icon style="color:#008000" [icon]="icons['add']"></fa-icon>
     </button>
-    <p>Totale Parziale : ${{ p.price * p.quantity }}</p>
+    <p>{{'partial' | translate}} ${{ p.price * p.quantity }}</p>
   </div>
   @if(!isDetail){
   <button [disabled]="cart.length === 0" [ngClass]="{'bg-red-500': cart.length > 0,
     'bg-gray-400 cursor-not-allowed': cart.length === 0}" class="mt-2 text-white px-4 py-2 rounded" (click)="clear()">
-    Svuota carrello
+    {{'cartClear' | translate}}
   </button>
   }
-  <div class="cart-total py-3">Totale : ${{total$ | async}}  @if(isDetail && actualShippingCost() > 0){<small>di cui ${{actualShippingCost()}} di spedizione.</small>}</div>
+  <div class="cart-total py-3">{{'total.value' | translate}} : ${{total$ | async}}  @if(isDetail && actualShippingCost() > 0){<small>{{'total.shippingCost' | translate:{'actualShippingCost': actualShippingCost() } }}</small>}</div>
   @if(!isDetail){
   <div class="mt-4">
     @if(cart.length > 0){
     <button [disabled]="cart.length === 0" class="text-white px-2 py-2 mt- rounded" [ngClass]="{'bg-green-500': cart.length > 0,
     'bg-gray-400 cursor-not-allowed': cart.length === 0}">
     <a [routerLink]="'checkout'">
-      Vai al checkout.</a>
+      {{'goToCheckout' | translate}}</a>
     </button>
     }
   </div>

@@ -1,21 +1,19 @@
 <form [formGroup]="paymentForm" class="bg-white border rounded-lg shadow-md p-4 flex flex-col" (ngSubmit)="next()">
-  <label class="text-lg font-semibold">Dettagli di pagamento</label>
+  <label class="text-lg font-semibold">{{'step3Title' | translate}}</label>
 
-  <label class="text-sm font-medium mt-2" for="cardName">Nome della carta</label>
-  <input type="text" formControlName="cardName" placeholder="Inserisci il nome della carta" (change)="setValidity()" id="cardName"/>
-  <small class="text-red-600" *ngIf="paymentForm.get('cardName')?.touched && paymentForm.get('cardName')?.invalid">Il
-    nome della carta è un campo obbligatorio e deve essere lungo almeno 4 caratteri.</small>
-  
-  <label class="text-sm font-medium mt-2" for="cardNumber">Numero della carta</label>
-  <input type="text" formControlName="cardNumber" placeholder="Inserisci il numero della carta" maxlength="16" (change)="setValidity()"/>
-  <small class="text-red-600" *ngIf="paymentForm.get('cardNumber')?.touched && paymentForm.get('cardNumber')?.invalid">Il
-    nome della carta è un campo obbligatorio e deve essere lungo esattamente 16 caratteri.</small>
+  <label class="text-sm font-medium mt-2" for="cardName">{{'step3CardName' | translate}}</label>
+  <input type="text" formControlName="cardName" placeholder="{{'step3CardNamePlaceholder' | translate}}" (change)="setValidity()" id="cardName"/>
+  <small class="text-red-600" *ngIf="paymentForm.get('cardName')?.touched && paymentForm.get('cardName')?.invalid">{{'step3InvalidCardName' | translate}}</small>
+
+  <label class="text-sm font-medium mt-2" for="cardNumber">{{'step3CardNumber' | translate}}</label>
+  <input type="text" formControlName="cardNumber" placeholder="{{'step3CardNumberPlaceholder' | translate}}" maxlength="16" (change)="setValidity()"/>
+  <small class="text-red-600" *ngIf="paymentForm.get('cardNumber')?.touched && paymentForm.get('cardNumber')?.invalid">{{'step3InvalidCardNumber' | translate}}</small>
   @if(!isDetail){
   <div class="flex gap-2 p-4">
     <button class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors p-1"
-      (click)="back()">Indietro</button>
+      (click)="back()">{{'step3Back' | translate}}</button>
     <button type="submit" class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors p-1"
-      [ngClass]="{'bg-gray-400 cursor-not-allowed':paymentForm.invalid}" [disabled]="paymentForm.invalid">Avanti</button>
+      [ngClass]="{'bg-gray-400 cursor-not-allowed':paymentForm.invalid}" [disabled]="paymentForm.invalid">{{'step3Next' | translate}}</button>
   </div>
   }
 </form>

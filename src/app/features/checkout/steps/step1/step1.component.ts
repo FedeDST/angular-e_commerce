@@ -3,10 +3,12 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CheckoutStore } from '../../../../core/services/checkout-store.service';
 import { CommonModule } from '@angular/common';
 import { CustomerInfo } from '../../../../core/models/checkout.model';
+import {TranslatePipe} from "@ngx-translate/core";
+
 
 @Component({
   selector: "app-step1",
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule,TranslatePipe],
   templateUrl: "./step1.component.html",
   styleUrl: "./step1.component.css",
 })
