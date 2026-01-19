@@ -6,10 +6,9 @@ import {
   IconDefinition,
   faHome,
   faSpinner,
-  faPlusCircle,
-  faMinusCircle,
   faPlus,
-  faMinus
+  faMinus,
+  faFlag
 } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
@@ -24,6 +23,7 @@ export class IconService {
     home: faHome,
     spinner: faSpinner,
     add: faPlus,
-    remove:faMinus
+    remove:faMinus,
+    flag: faFlag
   };
 }

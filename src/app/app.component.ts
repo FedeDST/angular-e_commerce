@@ -5,14 +5,6 @@ import { TopBarComponent } from "./features/top-bar-utilities/top-bar/top-bar.co
 import { RouterOutlet } from "@angular/router";
 import { ToastComponent } from "./features/toast/toast.component";
 import { ToastService } from "./core/services/toast.service";
-import {
-  TranslateService,
-  TranslatePipe,
-  TranslateDirective,
-} from "@ngx-translate/core";
-import translationsEN from "../../public/i18n/en.json";
-import translationsIT from "../../public/i18n/it.json";
-
 @Component({
   selector: "app-root",
   standalone: true,
@@ -23,8 +15,6 @@ import translationsIT from "../../public/i18n/it.json";
     TopBarComponent,
     RouterOutlet,
     ToastComponent,
-    TranslatePipe,
-    TranslateDirective,
   ],
   template: `
     <app-toast *ngIf="toast$ | async as toast" [toastObj]="toast"></app-toast>
@@ -37,10 +27,6 @@ import translationsIT from "../../public/i18n/it.json";
 export class AppComponent {
   constructor(
     private toastService: ToastService,
-    private translate: TranslateService,
-  ) {
-    this.translate.setTranslation("it", translationsIT);
-    this.translate.setFallbackLang("it");
-  }
+  ) {}
   toast$ = this.toastService.toast$;
 }
