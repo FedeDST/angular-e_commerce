@@ -10,6 +10,7 @@ import { Toast } from '../../../../core/models/toast.model';
 import { CartStoreService } from '../../../../core/services/cart-store.service';
 import { Router } from "@angular/router";
 import { timer } from 'rxjs';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: "app-step4",
@@ -19,6 +20,7 @@ import { timer } from 'rxjs';
     Step2Component,
     Step3Component,
     CommonModule,
+    TranslatePipe
 ],
   templateUrl: "./step4.component.html",
   styleUrl: "./step4.component.css",
@@ -26,12 +28,17 @@ import { timer } from 'rxjs';
 export class Step4Component {
   toast: Toast = { message: "", status: null, visible: false };
   cart$ = this.cartStore.cart$;
+  toastMsg ='';
   constructor(
     public checkoutStore: CheckoutStore,
     private toastService: ToastService,
     private cartStore: CartStoreService,
-    private router:Router
-  ) {}
+    private router:Router,
+    private translate: TranslateService
+  ) {
+    this.translate.stream('checkout.orderConfirmed')
+    .subscribe(value => this.toastMsg = value);
+  }
   checkInvalid = () => {
     return (
       !this.checkoutStore.state().customer?.valid ||
@@ -40,7 +47,7 @@ export class Step4Component {
     );
   };
   confirmOrder = () => {
-    this.toastService.updateToast(this.toast, "Acquisto effettuato", "S");
+    this.toastService.updateToast(this.toast, this.toastMsg, "S");
     timer(2000).subscribe(() => {
     this.router.navigate(['']);
     this.checkoutStore.reset();

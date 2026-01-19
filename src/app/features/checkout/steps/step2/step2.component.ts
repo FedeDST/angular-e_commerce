@@ -2,10 +2,11 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CheckoutStore } from '../../../../core/services/checkout-store.service';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-step2',
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule,CommonModule,TranslatePipe],
   templateUrl: './step2.component.html',
   styleUrl: './step2.component.css'
 })

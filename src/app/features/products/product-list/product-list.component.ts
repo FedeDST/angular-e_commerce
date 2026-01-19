@@ -7,6 +7,7 @@ import { Product } from '../../../core/models/product.model';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastService } from '../../../core/services/toast.service';
 import { Toast } from '../../../core/models/toast.model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: "app-product-list",
@@ -23,13 +24,18 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   filtered: Product[] = [];
   toast:Toast = {message:'',status:null,visible:false};
+  toastAddMsg ='';
 
 
   constructor(
     private cartStore: CartStoreService,
     private productStore: ProductStoreService,
-    private toastService: ToastService
-  ) {}
+    private toastService: ToastService,
+    private translate: TranslateService
+  ) {
+    this.translate.stream('cart.add')
+    .subscribe(value => this.toastAddMsg = value);
+  }
 
   ngOnInit(): void {
     this.productStore.products$.subscribe((products: Product[]) => {
@@ -41,7 +47,7 @@ export class ProductListComponent implements OnInit {
 
   addToCart(product: Product) {
     this.cartStore.add(product);
-    this.toastService.updateToast(this.toast,'Prodotto aggiunto','S');
+    this.toastService.updateToast(this.toast,this.toastAddMsg,'S');
 
   }
 
