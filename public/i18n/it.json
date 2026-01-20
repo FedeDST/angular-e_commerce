@@ -51,6 +51,8 @@
   "step4Back": "Indietro",
   "step4Reset": "Ritorna alla selezione dei prodotti",
   "checkout":{
-  "orderConfirmed": "Acquisto effettuato"
-  }
+  "orderConfirmed": "Acquisto effettuato",
+  "buyBtn": "Acquista"
+  },
+  "addToCart": "Aggiungi al carrello"
 }
