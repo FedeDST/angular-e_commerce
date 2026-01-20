@@ -7,12 +7,12 @@
     <div class="flex gap-2" *ngIf="cart$ | async as cart">
     @if(cart.length > 0){
     <button class="mt-2 bg-green-600 hover:bg-green-700 text-white rounded transition-colors p-2 mt-4" [ngClass]="{'bg-gray-400 cursor-not-allowed': checkInvalid()}" [disabled]="checkInvalid()" (click)="confirmOrder()">
-        {{'checkout.orderConfirmed' | translate}}</button>
+        {{'checkout.buyBtn' | translate}}</button>
     <button class="mt-auto bg-gray-600 hover:bg-gray-700 text-white rounded transition-colors p-2 mt-2" (click)="back()">
         {{'step4Back' | translate}}</button>
     } @else {
         <button class="mt-2 bg-green-600 hover:bg-green-700 text-white rounded transition-colors p-2 mt-4" (click)="reset()">
-        {{'step4ReturnToProductsButton' | translate}}</button>
+        {{'step4Reset' | translate}}</button>
     }
     </div>
 </div>

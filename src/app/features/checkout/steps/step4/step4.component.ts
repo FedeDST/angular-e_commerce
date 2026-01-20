@@ -10,7 +10,7 @@ import { Toast } from '../../../../core/models/toast.model';
 import { CartStoreService } from '../../../../core/services/cart-store.service';
 import { Router } from "@angular/router";
 import { timer } from 'rxjs';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: "app-step4",
@@ -34,11 +34,7 @@ export class Step4Component {
     private toastService: ToastService,
     private cartStore: CartStoreService,
     private router:Router,
-    private translate: TranslateService
-  ) {
-    this.translate.stream('checkout.orderConfirmed')
-    .subscribe(value => this.toastMsg = value);
-  }
+  ) {}
   checkInvalid = () => {
     return (
       !this.checkoutStore.state().customer?.valid ||
@@ -47,7 +43,7 @@ export class Step4Component {
     );
   };
   confirmOrder = () => {
-    this.toastService.updateToast(this.toast, this.toastMsg, "S");
+    this.toastService.updateToast(this.toast, 'checkout.orderConfirmed', "S");
     timer(2000).subscribe(() => {
     this.router.navigate(['']);
     this.checkoutStore.reset();
