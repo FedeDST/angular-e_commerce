@@ -51,7 +51,11 @@ export class CartComponent implements OnInit {
   remove(id: number) {
     this.cartStore.remove(id);
     this.total = this.cartStore.calculateTotal();
-    this.toastService.updateToast(this.toast, 'cart.remove', "E");
+    if(this.cartStore.getCartValue().length == 0){
+      this.toastService.updateToast(this.toast, 'cart.empty', "E");
+    } else {
+      this.toastService.updateToast(this.toast, 'cart.remove', "E");
+    }
   }
   add(product: Product) {
     this.cartStore.add(product);

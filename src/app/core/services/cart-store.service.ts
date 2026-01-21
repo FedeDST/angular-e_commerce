@@ -46,4 +46,7 @@ export class CartStoreService {
   countProductInCart(id: number, quantity: number): number {
     return this._cart.value.filter((product) => product.id === id) ? quantity + 1: quantity;
   }
+  getCartValue(): Product[] {
+    return this._cart.value;
+  }
 }
