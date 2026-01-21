@@ -1,7 +1,7 @@
 <div *ngIf="cart$ | async as cart">
   <div *ngFor="let p of cart" class="cart-detail border rounded-2xl bg-slate-50 p-4 mb-2 bg-slate-50 flex justify-center items-start" [ngClass]="{'gap-3':!isDetail,'gap-12':isDetail}">
     @if(isDetail){
-      <img [src]="p.image" alt="{{ p.title }}" class="h-20 object-contain mb-4" />
+      <img [src]="p.image" alt="{{ p.title }}" class="h-20 object-contain mb-4"/>
     }
     {{ p.title }} - ${{ p.price }}
     @if(isDetail){
