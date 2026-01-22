@@ -1,4 +1,4 @@
-<form [formGroup]="shippingForm" class="bg-white border rounded-2xl bg-slate-50 bg-slate-50 p-4 flex flex-col">
+<form [formGroup]="shippingForm" class="border rounded-2xl bg-slate-50 bg-slate-50 p-4 flex flex-col">
       <label class="text-lg font-semibold">{{'step2Title' | translate}}</label>
   <div class="flex gap-2 p-2">
       <input type="radio" class="bg-slate-50 bg-slate-50" name="ship" formControlName="ship" value="standard" [checked]="shippingForm.value.ship === 'standard'" (change)="changeSelection()"/>      

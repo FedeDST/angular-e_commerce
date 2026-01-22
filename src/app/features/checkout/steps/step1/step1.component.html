@@ -1,8 +1,11 @@
 <div class="grid grid-cols-1 gap-6">
-<form class="bg-white border rounded-2xl bg-slate-50 p-4 flex flex-col bg-slate-50" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+<form class="border rounded-2xl bg-slate-50 p-4 flex flex-col bg-slate-50" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
     <label class="text-lg font-semibold">{{'step1Title' | translate}}</label>
     <label class="text-sm text-gray-600 mb-4">{{'step1SubTitle' | translate}}</label>
 
+    <div class="grid grid-cols-3 gap 4">
+        
+    </div>
     <label class="text-sm font-medium mt-2" for="nome">{{'step1Name' | translate}}</label>
     <input type="text" class="bg-slate-50 bg-slate-50" formControlName="nome" placeholder="{{'step1NamePlaceholder' | translate}}" id="nome" (change)="setValidity()"/>
     <small class="text-red-600" *ngIf="customerForm.get('nome')?.touched && customerForm.get('nome')?.invalid">{{'step1InvalidName' | translate}}</small>
