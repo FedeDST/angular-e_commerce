@@ -1,4 +1,9 @@
 {
+  "menu": {
+    "title": "User Menu",
+    "userName": "User name :",
+    "Roles": "Roles :"
+  },
   "productSearchPlaceholder": "Find product...",
   "itemQuantity": "Quantity x ",
   "partial": "Subtotal: ",
@@ -57,5 +62,4 @@
   },
 
   "addToCart": "Add to cart"
-
 }

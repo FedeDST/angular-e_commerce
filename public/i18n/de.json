@@ -1,4 +1,9 @@
 {
+  "menu": {
+    "title": "Benutzermenü",
+    "userName": "Benutzername:",
+    "Roles": "Rollen:"
+  },
   "productSearchPlaceholder": "Produkt suchen...",
   "itemQuantity": "Menge x ",
   "partial": "Zwischensumme: ",
