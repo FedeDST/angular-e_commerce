@@ -18,10 +18,13 @@
     </button>
     <p>{{'partial' | translate}} ${{ p.price * p.quantity }}</p>
   </div>
-  @if(!isDetail){
+  @if(isDetail && actualShippingCost() > 0){
+  <div class="cart-total m-3">{{'total.value' | translate}} : ${{total$ | async}} <small>{{'total.shippingCost' |
+      translate:{'actualShippingCost': actualShippingCost() } }}</small></div>
+  }
+      @if(!isDetail){
   <div class="flex justify-end m-2">
-    <div class="cart-total m-3">{{'total.value' | translate}} : ${{total$ | async}} @if(isDetail && actualShippingCost()
-      > 0){<small>{{'total.shippingCost' | translate:{'actualShippingCost': actualShippingCost() } }}</small>}</div>
+    <div class="cart-total m-3">{{'total.value' | translate}} : ${{total$ | async}}</div>
     <button [disabled]="cart.length === 0" [ngClass]="{'bg-red-500': cart.length > 0,
     'bg-gray-400 cursor-not-allowed': cart.length === 0}" class="m-2 px-2 py-1 text-white rounded-2xl"
       (click)="clear()">
