@@ -61,5 +61,6 @@
     "buyBtn": "Buy"
   },
 
-  "addToCart": "Add to cart"
+  "addToCart": "Add to cart",
+  "errorOccurred": "An error occurred. Please try again later."
 }
