@@ -59,5 +59,6 @@
     "orderConfirmed": "Acquisto effettuato",
     "buyBtn": "Acquista"
   },
-  "addToCart": "Aggiungi al carrello"
+  "addToCart": "Aggiungi al carrello",
+  "errorOccurred": "Si è verificato un errore.Riprova più tardi."
 }
