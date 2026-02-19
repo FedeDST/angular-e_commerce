@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductSearchComponent } from '../product-search/product-search.component';
 import { CartStoreService } from '../../../core/services/cart-store.service';
@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastService } from '../../../core/services/toast.service';
 import { Toast } from '../../../core/models/toast.model';
 import { TranslatePipe } from '@ngx-translate/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { inject } from '@angular/core';
 
 @Component({
   selector: "app-product-list",
@@ -27,7 +29,7 @@ export class ProductListComponent implements OnInit {
   toast:Toast = {message:'',status:null,visible:false};
   toastAddMsg ='';
 
-
+  private destroyRef = inject(DestroyRef);
   constructor(
     private cartStore: CartStoreService,
     private productStore: ProductStoreService,
@@ -35,7 +37,7 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productStore.products$.subscribe((products: Product[]) => {
+    this.productStore.products$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((products: Product[]) => {
       this.products = products;
       this.filtered = products;
     });
