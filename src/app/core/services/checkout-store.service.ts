@@ -5,6 +5,7 @@ import {
   PaymentInfo,
   ShippingInfo,
 } from "../models/checkout.model";
+import { Subject } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class CheckoutStore {

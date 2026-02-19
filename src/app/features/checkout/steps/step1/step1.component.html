@@ -22,7 +22,7 @@
     <input type="text" class="bg-slate-50 bg-slate-50" formControlName="indirizzo" placeholder="{{'step1AddressPlaceholder' | translate}}" id="indirizzo" (change)="setValidity()"/>
     <small class="text-red-600" *ngIf="customerForm.get('indirizzo')?.touched && customerForm.get('indirizzo')?.invalid">{{'step1InvalidAddress' | translate}}</small>
     <div class="flex gap-2">
-    @if(!isDetail){<button class="mt-2 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl transition-colors p-1" type="submit" [ngClass]="{'bg-gray-400 cursor-not-allowed':customerForm.invalid}" [disabled]="customerForm.invalid">
+    @if(!isDetail){<button class="mt-2 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl transition-colors py-2 px-4" type="submit" [ngClass]="{'bg-gray-400 cursor-not-allowed':customerForm.invalid}" [disabled]="customerForm.invalid">
         {{'step1Next' | translate}}
         </button>}
     </div>

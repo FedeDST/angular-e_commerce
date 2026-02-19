@@ -10,9 +10,9 @@
   <small class="text-red-600" *ngIf="paymentForm.get('cardNumber')?.touched && paymentForm.get('cardNumber')?.invalid">{{'step3InvalidCardNumber' | translate}}</small>
   @if(!isDetail){
   <div class="flex gap-2 p-4">
-    <button class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded-2xl transition-colors p-1"
+    <button class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded-2xl transition-colors py-2 px-4"
       (click)="back()">{{'step3Back' | translate}}</button>
-    <button type="submit" class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded-2xl transition-colors p-1"
+    <button type="submit" class="mt-auto bg-blue-600 hover:bg-blue-700 text-white rounded-2xl transition-colors py-2 px-4"
       [ngClass]="{'bg-gray-400 cursor-not-allowed':paymentForm.invalid}" [disabled]="paymentForm.invalid">{{'step3Next' | translate}}</button>
   </div>
   }
