@@ -17,6 +17,7 @@ export class UserMenuComponent {
   logout() {
     KeycloakService.logout();
     localStorage.removeItem('cart');
+    localStorage.removeItem('favourites');
     this.showMenu = false;
   }
 }
