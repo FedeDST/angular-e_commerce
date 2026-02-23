@@ -10,6 +10,9 @@ import { Toast } from '../../../core/models/toast.model';
 import { TranslatePipe } from '@ngx-translate/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { inject } from '@angular/core';
+import { FavouritesService } from '../../../core/services/favourites.service';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { IconService } from '../../../core/services/icon.service';
 
 @Component({
   selector: "app-product-list",
@@ -20,7 +23,8 @@ import { inject } from '@angular/core';
     FormsModule,
     ReactiveFormsModule,
     TranslatePipe,
-  ],
+    FontAwesomeModule
+],
   templateUrl: "./product-list.component.html",
 })
 export class ProductListComponent implements OnInit {
@@ -28,18 +32,24 @@ export class ProductListComponent implements OnInit {
   filtered: Product[] = [];
   toast:Toast = {message:'',status:null,visible:false};
   toastAddMsg ='';
+  icons = this.icon.icons;
 
   private destroyRef = inject(DestroyRef);
   constructor(
     private cartStore: CartStoreService,
     private productStore: ProductStoreService,
     private toastService: ToastService,
+    private favouritesService: FavouritesService,
+    private icon: IconService
   ) {}
 
   ngOnInit(): void {
     this.productStore.products$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((products: Product[]) => {
       this.products = products;
       this.filtered = products;
+      if(this.filtered.length > 0){
+        this.changeFavoriteStatus(0,this.favouritesService.getFavouritesValue());
+      }
     });
     this.productStore.loadProducts();
   }
@@ -55,4 +65,31 @@ export class ProductListComponent implements OnInit {
       p.title.toLowerCase().includes(value.toLowerCase())
     );
   }
+  changeFavoriteStatus(productId: number, favouriteList?:number[]) {
+    if(favouriteList && favouriteList.find(id => this.filtered.some(p => p.id === id))){
+      this.filtered = this.filtered.map(p => {
+        if(favouriteList.includes(p.id)){
+          return {...p, isFavourite: true}
+        }
+        return p;
+      });
+    }
+    else{
+    this.filtered = this.filtered.map(p => {
+      if(p.id === productId){
+        return {...p, isFavourite: !p.isFavourite}
+      }
+      return p;
+    });
+    }
+  }
+  addFavourite(productId: number) {
+    if(this.filtered.find(p => p.id === productId)?.isFavourite){
+      this.favouritesService.removeFavourite(productId);
+    } else {
+      this.favouritesService.addFavourite(productId);
+    }
+    this.changeFavoriteStatus(productId);
+  }
+  
 }
