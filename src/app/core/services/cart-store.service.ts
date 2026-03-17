@@ -14,8 +14,9 @@ export class CartStoreService {
   }
 
   add(product: Product) {
+    let observerItem = this._cart.value.find((p) => p.id === product.id);
     if (this._cart.value.find((p) => p.id === product.id)) {
-      product.quantity = this.countProductInCart(product.id, product.quantity);
+       observerItem!.quantity = this.countProductInCart(product.id, observerItem!.quantity);
       this._cart.next([...this._cart.value]);
       return;
     } else {

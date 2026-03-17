@@ -33,7 +33,7 @@
 
 /* Active */
 .topnav .center a.active {
-  background-color: #041f5e;
+  background-color: rgb(55, 87, 162);
   color: white;
 }
 

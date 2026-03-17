@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnInit } from '@angular/core';
+import { Component, DestroyRef, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductSearchComponent } from '../product-search/product-search.component';
 import { CartStoreService } from '../../../core/services/cart-store.service';
@@ -23,16 +23,17 @@ import { IconService } from '../../../core/services/icon.service';
     FormsModule,
     ReactiveFormsModule,
     TranslatePipe,
-    FontAwesomeModule
-],
+    FontAwesomeModule,
+  ],
   templateUrl: "./product-list.component.html",
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   filtered: Product[] = [];
-  toast:Toast = {message:'',status:null,visible:false};
-  toastAddMsg ='';
+  toast: Toast = { message: "", status: null, visible: false };
+  toastAddMsg = "";
   icons = this.icon.icons;
+  @Input() onlyFav: boolean = false;
 
   private destroyRef = inject(DestroyRef);
   constructor(
@@ -40,56 +41,77 @@ export class ProductListComponent implements OnInit {
     private productStore: ProductStoreService,
     private toastService: ToastService,
     private favouritesService: FavouritesService,
-    private icon: IconService
+    private icon: IconService,
   ) {}
 
   ngOnInit(): void {
-    this.productStore.products$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((products: Product[]) => {
-      this.products = products;
-      this.filtered = products;
-      if(this.filtered.length > 0){
-        this.changeFavoriteStatus(0,this.favouritesService.getFavouritesValue());
-      }
-    });
+    this.productStore.products$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((products: Product[]) => {
+        if(!this.onlyFav){
+        this.products = products;
+        this.filtered = products;
+        } else {
+          const favIds = this.favouritesService.getFavouritesValue();
+          this.products = products.filter(p => favIds.includes(p.id));
+          this.filtered = this.products;
+        }
+        if (this.filtered.length > 0) {
+          this.changeFavoriteStatus(
+            0,
+            this.favouritesService.getFavouritesValue(),
+          );
+        }
+      });
     this.productStore.loadProducts();
   }
 
   addToCart(product: Product) {
     this.cartStore.add(product);
-    this.toastService.updateToast(this.toast,'cart.add','S');
-
+    this.toastService.updateToast(this.toast, "cart.add", "S");
   }
 
   onSearch(value: string) {
     this.filtered = this.products.filter((p) =>
-      p.title.toLowerCase().includes(value.toLowerCase())
+      p.title.toLowerCase().includes(value.toLowerCase()),
     );
+    if (this.filtered.length > 0) {
+      this.changeFavoriteStatus(0, this.favouritesService.getFavouritesValue());
+    }
   }
-  changeFavoriteStatus(productId: number, favouriteList?:number[]) {
-    if(favouriteList && favouriteList.find(id => this.filtered.some(p => p.id === id))){
-      this.filtered = this.filtered.map(p => {
-        if(favouriteList.includes(p.id)){
-          return {...p, isFavourite: true}
+  changeFavoriteStatus(productId: number, favouriteList?: number[]) {
+    if (
+      favouriteList &&
+      favouriteList.find((id) => this.filtered.some((p) => p.id === id))
+    ) {
+      this.filtered = this.filtered.map((p) => {
+        if (favouriteList.includes(p.id)) {
+          return { ...p, isFavourite: true };
+        }
+        return p;
+      });
+    } else {
+      this.filtered = this.filtered.map((p) => {
+        if (p.id === productId) {
+          return { ...p, isFavourite: !p.isFavourite };
         }
         return p;
       });
     }
-    else{
-    this.filtered = this.filtered.map(p => {
-      if(p.id === productId){
-        return {...p, isFavourite: !p.isFavourite}
-      }
-      return p;
-    });
-    }
   }
   addFavourite(productId: number) {
-    if(this.filtered.find(p => p.id === productId)?.isFavourite){
+    if (this.filtered.find((p) => p.id === productId)?.isFavourite) {
       this.favouritesService.removeFavourite(productId);
+      this.removeOnlyFav(productId);
     } else {
       this.favouritesService.addFavourite(productId);
     }
     this.changeFavoriteStatus(productId);
   }
-  
+  removeOnlyFav(productId: number) {
+    if(this.onlyFav){
+      this.products = this.products.filter(p => p.id !== productId);
+      this.filtered = this.filtered.filter(p => p.id !== productId);
+    }
+  }
 }

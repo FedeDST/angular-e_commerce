@@ -47,7 +47,7 @@ export class TopBarComponent implements OnInit {
       .subscribe((event: NavigationEnd) => {
         this.currentUrl = event.urlAfterRedirects;
         this.showHomeIcon = this.currentUrl !== "/";
-        this.showCartIcon = this.currentUrl !== "/login"; //Used for login icon and cart icon
+        this.showCartIcon = this.currentUrl !== "/checkout"; //Used for login icon and cart icon
       });
     this.translate.setTranslation("it", translationsIT);
     this.translate.setFallbackLang("it");

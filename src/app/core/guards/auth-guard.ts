@@ -8,7 +8,9 @@ export class authGuard implements CanActivate {
     const kc = KeycloakService.getKeycloak();
 
     if (!kc?.authenticated) {
-      kc?.login(); 
+      kc?.login();
+      localStorage.removeItem('cart');
+      localStorage.removeItem('favourites'); 
       return false;
     } else if(!localStorage.getItem('cart')){
       return this.router.createUrlTree(['']);

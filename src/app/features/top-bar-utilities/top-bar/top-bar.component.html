@@ -1,14 +1,15 @@
 <div *ngIf="user$ as user" class="mb-4">
   <div class="topnav">
     <div class="left">
-      <h1 class="title">Angular E-commerce Test</h1>
+      <h1 class="title">E-commerce</h1>
     </div>
 
     <div class="custom-icon-color">
+            <a routerLink="wishList"><fa-icon class="custom-icon-color" [icon]="icons['heart']"></fa-icon></a>
       @if(showHomeIcon) {
       <a routerLink=""><fa-icon class="custom-icon-color" [icon]="icons['home']"></fa-icon></a>
       }
-      @else if(showCartIcon){
+      @if(showCartIcon){
         <button class="inline-block" (click)="toggleCartPreview()"><fa-icon [icon]="icons['cart']"></fa-icon></button>
         <app-cart-viewer [isOpen]="opened" (closedFromViewer)="toggleCartPreview()"></app-cart-viewer>
       }
